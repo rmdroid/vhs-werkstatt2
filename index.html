@@ -10,13 +10,17 @@
       --petrol: #0f5c66;
       --petrol-dark: #0c4c54;
       --ink: #142e33;
-      --muted: #2f4c51;
+      --muted: #3a555a;
       --cream: #fff8f1;
       --paper: #fffdfb;
       --line: #d7e2df;
       --orange: #f28c28;
+      --orange-soft: rgba(242, 140, 40, 0.16);
       --focus: #102e33;
       --soft: #e7f2f1;
+      --shadow: 0 8px 22px rgba(15, 92, 102, 0.10);
+      --shadow-hover: 0 14px 32px rgba(15, 92, 102, 0.16);
+      --ease: 180ms ease;
     }
 
     * { box-sizing: border-box; }
@@ -27,287 +31,648 @@
       margin: 0;
       background: var(--cream);
       color: var(--ink);
-      font-family: "Segoe UI", system-ui, Arial, sans-serif;
-      font-size: 1.125rem;
-      line-height: 1.45;
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.5;
     }
 
-    .hero,
-    .stack {
-      width: min(1440px, calc(100% - 2rem));
+    .wrap {
+      width: min(1120px, calc(100% - 2rem));
       margin-inline: auto;
     }
 
+    /* ---------- Hero ---------- */
     .hero {
       margin-top: 1.25rem;
-      padding: 2rem 1.6rem 1.8rem;
-      border-radius: 18px;
+      padding: 0;
+      border-radius: 20px;
       background:
-        linear-gradient(135deg, rgba(15, 92, 102, 0.96), rgba(12, 76, 84, 0.92)),
-        repeating-linear-gradient(
-          -12deg,
-          transparent,
-          transparent 12px,
-          rgba(255, 255, 255, 0.03) 12px,
-          rgba(255, 255, 255, 0.03) 24px
-        );
+        linear-gradient(135deg, rgba(15, 92, 102, 0.97), rgba(12, 76, 84, 0.94));
       color: #f7fbfb;
-      box-shadow: 0 12px 28px rgba(15, 92, 102, 0.16);
-      position: relative;
+      box-shadow: 0 14px 34px rgba(15, 92, 102, 0.18);
       overflow: hidden;
+      display: grid;
+      gap: 0;
+      align-items: stretch;
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: -40px;
-      top: -40px;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: rgba(242, 140, 40, 0.22);
-      pointer-events: none;
+    .hero-copy {
+      padding: 2rem 1.7rem 1.9rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero-copy { position: relative; z-index: 1; max-width: 42rem; }
+    .hero-visual {
+      display: block;
+      position: relative;
+      min-height: 180px;
+      max-height: 220px;
+      background: #0d5058;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
 
     .eyebrow {
       margin: 0;
-      color: var(--petrol);
-      font-size: 0.95rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+      color: var(--petrol);
     }
 
-    .hero .eyebrow { color: #f7fbfb; opacity: 0.92; }
+    .hero .eyebrow {
+      color: #f7fbfb;
+      opacity: 0.9;
+    }
 
     h1 {
-      margin: 0.35rem 0 0.6rem;
-      font-size: clamp(1.9rem, 6vw, 2.6rem);
+      margin: 0.4rem 0 0.7rem;
+      font-size: clamp(1.75rem, 5vw, 2.45rem);
       line-height: 1.12;
       letter-spacing: -0.02em;
     }
 
     .lead {
       margin: 0;
-      max-width: 40rem;
-      color: #e7f4f3;
+      max-width: 36rem;
+      color: #e4f1f0;
+      font-size: 1.05rem;
     }
 
+    /* ---------- Main stack ---------- */
     .stack {
       display: grid;
-      gap: 1rem;
-      margin-top: 1.35rem;
+      gap: 1.15rem;
+      margin-top: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin: 0.55rem 0 0;
+      flex-wrap: wrap;
     }
 
     .section-title {
-      margin: 0.6rem 0 0;
-      font-size: 0.95rem;
+      margin: 0;
+      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--petrol);
     }
 
+    .section-note {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ---------- Hint box ---------- */
+    .hint {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      padding: 1rem 1.15rem;
+      border-radius: 14px;
+      background: var(--soft);
+      border: 1px solid #c9dedc;
+      color: var(--ink);
+    }
+
+    .hint-icon {
+      flex: 0 0 auto;
+      width: 28px;
+      height: 28px;
+      margin-top: 0.1rem;
+      color: var(--petrol);
+    }
+
+    .hint p {
+      margin: 0;
+      font-size: 0.98rem;
+      color: var(--ink);
+    }
+
+    .hint strong { color: var(--petrol-dark); }
+
+    /* ---------- Timeline ---------- */
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 1rem 1.05rem 1.1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+      gap: 0.55rem;
+      border-radius: 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .tl-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding: 0.55rem 0.6rem;
+      border-radius: 10px;
+      background: var(--cream);
+      border-left: 3px solid var(--petrol);
+      min-height: 3.6rem;
+    }
+
+    .tl-item.is-pause {
+      border-left-color: var(--orange);
+      background: var(--orange-soft);
+    }
+
+    .tl-time {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--petrol);
+      letter-spacing: 0.02em;
+    }
+
+    .tl-item.is-pause .tl-time { color: #b86210; }
+
+    .tl-label {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+
+    /* ---------- Cards ---------- */
     .split {
       display: grid;
-      gap: 1rem;
+      gap: 0.9rem;
     }
 
     .card {
+      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
-      min-height: 9.5rem;
-      padding: 1.35rem 1.4rem 1.45rem;
-      border: 2px solid var(--line);
+      gap: 0.4rem;
+      min-height: 9rem;
+      padding: 1.25rem 1.3rem 1.2rem;
+      border: 1px solid var(--line);
       border-radius: 16px;
       background: var(--paper);
       color: inherit;
       text-decoration: none;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition:
+        transform var(--ease),
+        box-shadow var(--ease),
+        border-color var(--ease);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: transparent;
+      transition: background var(--ease);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .card-icon {
+      flex: 0 0 auto;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--soft);
+      color: var(--petrol);
+    }
+
+    .card-icon svg {
+      width: 22px;
+      height: 22px;
+      display: block;
     }
 
     .card h2 {
       margin: 0;
-      font-size: clamp(1.35rem, 3vw, 1.6rem);
-      line-height: 1.2;
+      font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+      line-height: 1.25;
       letter-spacing: -0.015em;
+      color: var(--ink);
     }
 
-    .card p:last-child {
-      margin: 0.15rem 0 0;
+    .card p.desc {
+      margin: 0.1rem 0 0;
       color: var(--muted);
+      font-size: 0.95rem;
+      flex: 1;
     }
 
-    .card-primary {
-      min-height: 11.5rem;
-      padding: 1.7rem 1.6rem 1.8rem;
-      border: 0;
-      border-left: 8px solid var(--orange);
-      background: var(--petrol);
-      color: #f7fbfb;
-      box-shadow: 0 12px 28px rgba(15, 92, 102, 0.16);
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.55rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--petrol);
     }
 
-    .card-primary .eyebrow { color: #f7fbfb; }
-
-    .card-primary h2 {
-      font-size: clamp(1.85rem, 4vw, 2.35rem);
+    .card-action .arrow {
+      display: inline-block;
+      transition: transform var(--ease);
     }
 
-    .card-primary p:last-child {
-      max-width: 46rem;
-      color: #e7f4f3;
-      font-size: 1.15rem;
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: #b8cdc9;
     }
 
-    .card:hover { border-color: var(--petrol); }
+    .card:hover::before {
+      background: var(--orange);
+    }
 
-    .card-primary:hover { background: var(--petrol-dark); }
-
-    .card:active { background: #f4faf9; }
-
-    .card-primary:active { background: #0a4249; }
+    .card:hover .card-action .arrow {
+      transform: translateX(4px);
+    }
 
     .card:focus-visible {
       outline: 3px solid var(--focus);
       outline-offset: 3px;
     }
 
-    .card-primary:focus-visible {
-      outline-color: #fff8f1;
-      box-shadow: 0 0 0 6px var(--focus);
+    /* Primary Miro card – stays strong petrol */
+    .card-primary {
+      min-height: 10.5rem;
+      padding: 1.55rem 1.5rem 1.45rem;
+      border: 0;
+      background: var(--petrol);
+      color: #f7fbfb;
+      box-shadow: 0 12px 28px rgba(15, 92, 102, 0.18);
     }
 
-    .card-placeholder {
-      border-style: dashed;
-      background: var(--soft);
+    .card-primary::before {
+      width: 6px;
+      background: var(--orange);
     }
 
-    .badge {
-      display: inline-block;
-      margin-top: 0.35rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      background: rgba(242, 140, 40, 0.18);
-      color: var(--petrol-dark);
-      font-size: 0.85rem;
-      font-weight: 700;
+    .card-primary .eyebrow,
+    .card-primary h2,
+    .card-primary .card-action {
+      color: #f7fbfb;
     }
 
-    .card-primary .badge {
-      background: rgba(255, 248, 241, 0.18);
+    .card-primary p.desc,
+    .card-primary .desc {
+      color: #f2fafa;
+      opacity: 1;
+    }
+
+    .card-primary .card-action {
+      color: #ffffff;
+    }
+
+    .card-primary .card-icon {
+      background: rgba(255, 248, 241, 0.14);
       color: #fff8f1;
     }
 
+    .card-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(15, 92, 102, 0.28);
+      border-color: transparent;
+      background: var(--petrol); /* no hard color flip */
+    }
+
+    .card-primary:focus-visible {
+      outline-color: #fff8f1;
+      box-shadow: 0 0 0 6px var(--focus), 0 12px 28px rgba(15, 92, 102, 0.18);
+    }
+
+    /* Placeholder badge – small, does NOT restyle the whole card */
+    .badge-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      align-self: flex-start;
+      margin-top: 0.55rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #f28c28;
+      color: #142e33;
+      border: 1px solid transparent;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .card:not(.card-primary) .badge-soon {
+      background: var(--orange-soft);
+      color: #9a5208;
+    }
+
+    /* Teams card – paper with dashed border hint */
+    .card-soon {
+      border-style: dashed;
+      border-color: #b8cdc9;
+    }
+
+
+    .station-label {
+      margin: 0.35rem 0 -0.25rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #6a8589;
+    }
+
+    /* ---------- Footer ---------- */
     footer {
-      width: min(1440px, calc(100% - 2rem));
-      margin: 0.4rem auto 1.5rem;
-      padding-top: 0.85rem;
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto 1.6rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line);
     }
 
     footer p {
-      margin: 0;
+      margin: 0.75rem 0 0;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
-    @media (min-width: 800px) {
-      .split { grid-template-columns: 1fr 1fr; }
+    /* ---------- Responsive ---------- */
+    @media (min-width: 720px) {
+      .hero {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+      .hero-visual {
+        max-height: none;
+        min-height: 100%;
+      }
+      .hero-copy { padding: 2.2rem 1.9rem 2.1rem; }
+      .split-2 { grid-template-columns: 1fr 1fr; }
       .split-3 { grid-template-columns: 1fr 1fr 1fr; }
       .card { min-height: 100%; }
     }
 
+    @media (min-width: 960px) {
+      .timeline {
+        grid-template-columns: repeat(9, 1fr);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+      .card,
+      .card::before,
+      .card-action .arrow {
+        transition: none;
+      }
+      .card:hover,
+      .card-primary:hover {
+        transform: none;
+      }
+      .card:hover .card-action .arrow {
+        transform: none;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
+  <header class="hero wrap">
     <div class="hero-copy">
       <p class="eyebrow">VHS-Tageskurs · 9–14 Uhr</p>
       <h1>Praxis-Werkstatt KI: Analysieren</h1>
       <p class="lead">Herzlich willkommen. Heute üben Sie die strukturierte Auswertung von Texten und Tabellen mit ChatGPT, Mistral&nbsp;Le&nbsp;Chat und Claude – inklusive Plausibilitätscheck und Entscheidungsvorlage.</p>
     </div>
+    <div class="hero-visual">
+      <img src="kurs-hero.jpg" width="1280" height="720" alt="Illustration: Tabellen, Diagramme, Lupe und Checkliste – Datenanalyse mit KI">
+    </div>
   </header>
 
-  <main class="stack">
+  <main class="stack wrap">
+    <aside class="hint" role="note">
+      <svg class="hint-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+        <path d="M12 8v.01M12 11v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <p><strong>Nur fiktive Daten</strong> – keine personenbezogenen Daten in KI-Tools (KI-Dienstanweisung). Nutzen Sie ausschließlich die Übungsdateien von dieser Seite und kostenlose Accounts.</p>
+    </aside>
+
+    <div class="section-head">
+      <p class="section-title">Ablauf heute</p>
+      <p class="section-note">8 Stationen · Pause um 11:00</p>
+    </div>
+    <ol class="timeline" aria-label="Tagesablauf">
+      <li class="tl-item"><span class="tl-time">9:00</span><span class="tl-label">0 Start</span></li>
+      <li class="tl-item"><span class="tl-time">9:15</span><span class="tl-label">1 Aufwärmen</span></li>
+      <li class="tl-item"><span class="tl-time">9:45</span><span class="tl-label">2 Datenanalyse</span></li>
+      <li class="tl-item"><span class="tl-time">10:30</span><span class="tl-label">3 Dashboard</span></li>
+      <li class="tl-item is-pause"><span class="tl-time">11:00</span><span class="tl-label">Pause</span></li>
+      <li class="tl-item"><span class="tl-time">11:15</span><span class="tl-label">4 Vergleich</span></li>
+      <li class="tl-item"><span class="tl-time">12:00</span><span class="tl-label">5 Plausibilität</span></li>
+      <li class="tl-item"><span class="tl-time">13:00</span><span class="tl-label">6 Vorlage</span></li>
+      <li class="tl-item"><span class="tl-time">13:40</span><span class="tl-label">7 Abschluss</span></li>
+    </ol>
+
     <!-- ===== MIRO-LINK: vor Kursbeginn durch echten Board-Link ersetzen ===== -->
-    <a class="card card-primary card-placeholder" href="#miro-platzhalter">
-      <p class="eyebrow">Gemeinsames Arbeitsboard</p>
-      <h2>Zum Miro-Board</h2>
-      <p>Hier entsteht das gemeinsame Kursboard mit Stationen, Prompt-Bausteinen und Ergebnisflächen. <strong>Platzhalter – Link folgt.</strong></p>
-      <span class="badge">Platzhalter</span>
+    <a class="card card-primary" href="#miro-platzhalter">
+      <div class="card-top">
+        <div>
+          <p class="eyebrow">Gemeinsames Arbeitsboard</p>
+          <h2>Zum Miro-Board</h2>
+        </div>
+        <span class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
+        </span>
+      </div>
+      <p class="desc">Gemeinsames Kursboard mit Stationen, Prompt-Bausteinen und Ergebnisflächen – hier arbeiten wir den Tag über.</p>
+      <span class="badge-soon">Link folgt</span>
+      <span class="card-action">Öffnen <span class="arrow" aria-hidden="true">↗</span></span>
     </a>
     <!-- ===== ENDE MIRO-LINK ===== -->
 
     <!-- ===== TEAMS-LINK: vor Kursbeginn ersetzen ===== -->
-    <a class="card card-placeholder" href="#teams-platzhalter">
-      <p class="eyebrow">Für den Beamer</p>
-      <h2>Teams-Meeting</h2>
-      <p>Darüber zeigen Teilnehmende ihren Bildschirm, damit einzelne Ergebnisse auf den Beamer kommen. <strong>Platzhalter – Link folgt.</strong></p>
-      <span class="badge">Platzhalter</span>
+    <a class="card card-soon" href="#teams-platzhalter">
+      <div class="card-top">
+        <div>
+          <p class="eyebrow">Für den Beamer</p>
+          <h2>Teams-Meeting</h2>
+        </div>
+        <span class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 9l6-3v12l-6-3" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+      <p class="desc">Darüber zeigen Teilnehmende ihren Bildschirm, damit einzelne Ergebnisse auf den Beamer kommen.</p>
+      <span class="badge-soon">Link folgt</span>
+      <span class="card-action">Öffnen <span class="arrow" aria-hidden="true">↗</span></span>
     </a>
     <!-- ===== ENDE TEAMS-LINK ===== -->
 
-    <p class="section-title">Übungsdaten</p>
-    <div class="split">
+    <div class="section-head">
+      <p class="section-title">Übungsdaten</p>
+      <p class="section-note">Reihenfolge nach Stationen</p>
+    </div>
+
+    <p class="station-label">Station 1 · Aufwärmen</p>
+    <!-- Station 1 -->
+    <a class="card" href="daten/aufwaermen_mini.csv" download="aufwaermen_mini.csv">
+      <div class="card-top">
+        <div>
+          <p class="eyebrow">Station 1 · CSV</p>
+          <h2>Aufwärmen – Mini-Tabelle</h2>
+        </div>
+        <span class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="18" r="3" stroke="currentColor" stroke-width="2"/></svg>
+        </span>
+      </div>
+      <p class="desc">Kurze Übersicht mit einem versteckten Rechenfehler. Zum Einstieg in den Plausibilitätscheck.</p>
+      <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
+    </a>
+
+    <p class="station-label">Station 2 &amp; 3 · Datenanalyse &amp; Dashboard</p>
+    <!-- Station 2/3 -->
+    <div class="split split-2">
       <a class="card" href="daten/buergeranliegen.csv" download="buergeranliegen.csv">
-        <p class="eyebrow">CSV · Excel DE</p>
-        <h2>Bürgeranliegen (CSV)</h2>
-        <p>Fiktive Jahresübersicht Musterstadt 2025 (UTF-8 mit BOM, Semikolon). Für Station Datenanalyse und Dashboard.</p>
+        <div class="card-top">
+          <div>
+            <p class="eyebrow">Station 2 &amp; 3 · CSV</p>
+            <h2>Bürgeranliegen (CSV)</h2>
+          </div>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M9 9v11M15 9v11" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+        </div>
+        <p class="desc">Fiktive Jahresübersicht Musterstadt 2025 (UTF-8 mit BOM, Semikolon). Für Datenanalyse und Dashboard.</p>
+        <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
       </a>
       <a class="card" href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">
-        <p class="eyebrow">Excel</p>
-        <h2>Bürgeranliegen (XLSX)</h2>
-        <p>Dieselbe Tabelle als Excel-Datei – falls der CSV-Import im Tool hakelt.</p>
+        <div class="card-top">
+          <div>
+            <p class="eyebrow">Station 2 &amp; 3 · XLSX</p>
+            <h2>Bürgeranliegen (Excel)</h2>
+          </div>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M8 13l2.5 3L8 19M13 13h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <p class="desc">Dieselbe Tabelle als Excel-Datei – falls der CSV-Import im Tool hakelt.</p>
+        <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
       </a>
     </div>
 
-    <div class="split">
-      <a class="card" href="daten/aufwaermen_mini.csv" download="aufwaermen_mini.csv">
-        <p class="eyebrow">Station 1</p>
-        <h2>Aufwärmen – Mini-Tabelle</h2>
-        <p>Kurze Übersicht mit einem versteckten Rechenfehler. Zum Einstieg in den Plausibilitätscheck.</p>
-      </a>
-      <a class="card" href="daten/ki_ergebnis_fehlerbingo.docx" download="ki_ergebnis_fehlerbingo.docx">
-        <p class="eyebrow">Station 5 · DOCX</p>
-        <h2>KI-Ergebnis fürs Fehler-Bingo</h2>
-        <p>Vorbereitetes Analyseergebnis zur Bürgeranliegen-CSV – zum Prüfen mit der Checkliste.</p>
-      </a>
-    </div>
-
-    <div class="split">
+    <p class="station-label">Station 4 · Vergleichsanalyse</p>
+    <!-- Station 4 -->
+    <div class="split split-2">
       <a class="card" href="daten/stellungnahme_a.docx" download="stellungnahme_a.docx">
-        <p class="eyebrow">Station 4 · DOCX</p>
-        <h2>Stellungnahme A</h2>
-        <p>Bürgerinitiative „Grünes Zentrum Musterstadt“ – Pro Umwandlung Parkplatz zu Grünfläche.</p>
+        <div class="card-top">
+          <div>
+            <p class="eyebrow">Station 4 · DOCX</p>
+            <h2>Stellungnahme A</h2>
+          </div>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="2"/><path d="M14 3v5h5M8 13h8M8 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+        <p class="desc">Bürgerinitiative „Grünes Zentrum Musterstadt“ – Pro Umwandlung Parkplatz zu Grünfläche.</p>
+        <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
       </a>
       <a class="card" href="daten/stellungnahme_b.docx" download="stellungnahme_b.docx">
-        <p class="eyebrow">Station 4 · DOCX</p>
-        <h2>Stellungnahme B</h2>
-        <p>Einzelhandelsverband Musterstadt – Contra vollständige Umwandlung, Kompromissvorschlag.</p>
+        <div class="card-top">
+          <div>
+            <p class="eyebrow">Station 4 · DOCX</p>
+            <h2>Stellungnahme B</h2>
+          </div>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="2"/><path d="M14 3v5h5M8 13h8M8 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+        <p class="desc">Einzelhandelsverband Musterstadt – Contra vollständige Umwandlung, Kompromissvorschlag.</p>
+        <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
       </a>
     </div>
 
-    <p class="section-title">Werkzeuge (nur kostenlose Accounts)</p>
+    <p class="station-label">Station 5 · Plausibilitätscheck</p>
+    <!-- Station 5 -->
+    <a class="card" href="daten/ki_ergebnis_fehlerbingo.docx" download="ki_ergebnis_fehlerbingo.docx">
+      <div class="card-top">
+        <div>
+          <p class="eyebrow">Station 5 · DOCX</p>
+          <h2>KI-Ergebnis fürs Fehler-Bingo</h2>
+        </div>
+        <span class="card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 11h6M11 8v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+      </div>
+      <p class="desc">Vorbereitetes Analyseergebnis zur Bürgeranliegen-CSV – zum Prüfen mit der Checkliste.</p>
+      <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
+    </a>
+
+    <div class="section-head">
+      <p class="section-title">Werkzeuge</p>
+      <p class="section-note">Nur kostenlose Accounts</p>
+    </div>
     <div class="split split-3">
       <a class="card" href="https://chatgpt.com/" target="_blank" rel="noopener">
-        <p class="eyebrow">Tool</p>
-        <h2>ChatGPT</h2>
-        <p>Kostenlosen Account nutzen. Datei-Upload für CSV/DOCX in der Free-Variante prüfen.</p>
+        <div class="card-top">
+          <div>
+            <p class="eyebrow">Tool</p>
+            <h2>ChatGPT</h2>
+          </div>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.2 4.5L19 8.2l-3.5 3.4.8 4.9L12 14.8 7.7 16.5l.8-4.9L5 8.2l4.8-.7L12 3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+        <p class="desc">Kostenlosen Account nutzen. Datei-Upload für CSV/DOCX in der Free-Variante prüfen.</p>
+        <span class="card-action">Öffnen <span class="arrow" aria-hidden="true">↗</span></span>
       </a>
       <a class="card" href="https://chat.mistral.ai/" target="_blank" rel="noopener">
-        <p class="eyebrow">Tool</p>
-        <h2>Mistral Le Chat</h2>
-        <p>Europäischer Anbieter. Kostenlosen Account nutzen – gut für den Tool-Vergleich.</p>
+        <div class="card-top">
+          <div>
+            <p class="eyebrow">Tool</p>
+            <h2>Mistral Le Chat</h2>
+          </div>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+        <p class="desc">Europäischer Anbieter. Kostenlosen Account nutzen – gut für den Tool-Vergleich.</p>
+        <span class="card-action">Öffnen <span class="arrow" aria-hidden="true">↗</span></span>
       </a>
       <a class="card" href="https://claude.ai/" target="_blank" rel="noopener">
-        <p class="eyebrow">Tool</p>
-        <h2>Claude</h2>
-        <p>Kostenlosen Account nutzen. Besonders geeignet für HTML-Dashboards mit Vorschau.</p>
+        <div class="card-top">
+          <div>
+            <p class="eyebrow">Tool</p>
+            <h2>Claude</h2>
+          </div>
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+        <p class="desc">Kostenlosen Account nutzen. Besonders geeignet für HTML-Dashboards mit Vorschau.</p>
+        <span class="card-action">Öffnen <span class="arrow" aria-hidden="true">↗</span></span>
       </a>
     </div>
   </main>

@@ -7,6 +7,7 @@ VHS-Tageskurs (9–14 Uhr) für Verwaltungsmitarbeitende. Schwerpunkt: strukturi
 | Pfad | Zweck |
 |---|---|
 | `index.html` | Kurs-Startseite (GitHub Pages) |
+| `kurs-hero.jpg` | Hero-Illustration auf der Startseite |
 | `daten/buergeranliegen.csv` / `.xlsx` | Übungsdaten Bürgeranliegen Musterstadt 2025 |
 | `daten/aufwaermen_mini.csv` | Mini-Tabelle mit Rechenfehler (Station 1) |
 | `daten/stellungnahme_a.docx` / `_b.docx` | Zwei Stellungnahmen zum Parkplatz-Sachverhalt |

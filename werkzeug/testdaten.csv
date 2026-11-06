@@ -1,0 +1,31 @@
+﻿ID;Eingangsdatum;Monat;Stadtteil;Kanal;Kategorie;Dringlichkeit;Bearbeitungsdauer_Tage;Status;Kurzbeschreibung
+BA-2025-0001;2025-11-04;11;Westend;Persönlich;Beleuchtung;hoch;15;erledigt;Blinkende Ampel
+BA-2025-0002;2025-02-22;2;Südstadt;E-Mail;Sonstiges;niedrig;28;erledigt;Hinweis Bürgerbüro
+BA-2025-0003;2025-02-07;2;Südstadt;E-Mail;Grünflächen;niedrig;13;offen;Unkraut an Bushaltestelle
+BA-2025-0004;2025-12-18;12;Industriegebiet;Telefon;Müll & Sauberkeit;niedrig;18;erledigt;Übervoller Container
+BA-2025-0005;2025-12-14;12;Nordstadt;Online-Formular;Lärm;hoch;22;erledigt;Baulärm abends
+BA-2025-0006;2025-07-04;7;Nordstadt;Persönlich;Lärm;hoch;30;offen;Baulärm abends
+BA-2025-0007;2025-07-03;7;Nordstadt;Persönlich;Parken;niedrig;13;offen;Falschparker Feuerwehrzufahrt
+BA-2025-0008;2025-01-22;1;Nordstadt;E-Mail;Grünflächen;hoch;7;in Bearbeitung;Spielplatz verwahrlost
+BA-2025-0009;2025-08-21;8;Nordstadt;Online-Formular;Straße & Verkehr;mittel;23;erledigt;Glätte an Steigung
+BA-2025-0010;2025-05-23;5;Westend;E-Mail;Sonstiges;niedrig;41;erledigt;Anfrage Öffnungszeiten
+BA-2025-0011;2025-12-08;12;Ostviertel;Telefon;Grünflächen;mittel;41;offen;Unkraut an Bushaltestelle
+BA-2025-0012;2025-04-22;4;Altstadt;Online-Formular;Lärm;hoch;21;in Bearbeitung;Laute Musik
+BA-2025-0013;2025-02-07;2;Westend;Persönlich;Parken;hoch;42;in Bearbeitung;Zu wenig Kurzzeitparken
+BA-2025-0014;2025-11-15;11;Nordstadt;Online-Formular;Grünflächen;hoch;36;offen;Spielplatz verwahrlost
+BA-2025-0015;2025-12-19;12;Südstadt;Telefon;Müll & Sauberkeit;mittel;15;erledigt;Verschmutzte Unterführung
+BA-2025-0016;2025-08-03;8;Altstadt;E-Mail;Straße & Verkehr;hoch;41;erledigt;Glätte an Steigung
+BA-2025-0017;2025-07-20;7;Ostviertel;Telefon;Beleuchtung;niedrig;30;offen;Dunkler Fußweg
+BA-2025-0018;2025-09-28;9;Westend;E-Mail;Beleuchtung;niedrig;35;in Bearbeitung;Blinkende Ampel
+BA-2025-0019;2025-06-04;6;Ostviertel;Online-Formular;Lärm;mittel;1;offen;Durchgangsverkehr
+BA-2025-0020;2025-05-17;5;Industriegebiet;E-Mail;Straße & Verkehr;niedrig;20;offen;Glätte an Steigung
+BA-2025-0021;2025-10-07;10;Nordstadt;Online-Formular;Grünflächen;niedrig;34;erledigt;Unkraut an Bushaltestelle
+BA-2025-0022;2025-06-16;6;Altstadt;Persönlich;Beleuchtung;mittel;16;erledigt;Laterne defekt
+BA-2025-0023;2025-10-03;10;Westend;Telefon;Beleuchtung;hoch;35;erledigt;Laterne defekt
+BA-2025-0024;2025-11-16;11;Industriegebiet;Persönlich;Parken;niedrig;39;in Bearbeitung;Falschparker Feuerwehrzufahrt
+BA-2025-0025;2025-09-25;9;Westend;Online-Formular;Sonstiges;niedrig;20;in Bearbeitung;Anfrage Öffnungszeiten
+BA-2025-0026;2025-11-12;11;Südstadt;Telefon;Müll & Sauberkeit;hoch;16;erledigt;Übervoller Container
+BA-2025-0027;2025-06-01;6;Südstadt;Online-Formular;Parken;niedrig;15;erledigt;Falschparker Feuerwehrzufahrt
+BA-2025-0028;2025-12-21;12;Industriegebiet;E-Mail;Beleuchtung;hoch;22;erledigt;Blinkende Ampel
+BA-2025-0029;2025-04-09;4;Ostviertel;Online-Formular;Sonstiges;niedrig;9;offen;Anfrage Öffnungszeiten
+BA-2025-0030;2025-10-16;10;Ostviertel;Telefon;Grünflächen;hoch;7;erledigt;Unkraut an Bushaltestelle

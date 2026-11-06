@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bürgeranliegen – lokales Dashboard</title>
+<style>
+:root{
+  --petrol:#0F6E6E; --petrol-dark:#0a4f4f; --petrol-soft:#e6f3f3;
+  --orange:#E67E22; --orange-soft:#fdf0e4;
+  --ink:#1a2330; --muted:#5b6775; --line:#d8dee6; --bg:#f5f7fa; --card:#fff;
+  --danger:#c0392b; --ok:#1e7a46; --warn:#b7791f;
+  --radius:12px; --shadow:0 2px 10px rgba(26,35,48,.08);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink);background:var(--bg)}
+body{min-height:100vh}
+.wrap{max-width:1280px;margin:0 auto;padding:20px 20px 48px}
+.topbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--petrol),var(--petrol-dark));display:grid;place-items:center;color:#fff;font-weight:700;font-size:14px}
+h1{margin:0;font-size:1.35rem;letter-spacing:-.02em}
+.sub{margin:2px 0 0;color:var(--muted);font-size:.9rem}
+.privacy{background:var(--petrol-soft);color:var(--petrol-dark);border:1px solid #b9dcdc;border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:600}
+.drop{
+  border:2px dashed #9bbaba;background:var(--card);border-radius:var(--radius);
+  padding:28px 20px;text-align:center;box-shadow:var(--shadow);margin-bottom:16px;
+  transition:border-color .15s, background .15s;
+}
+.drop.drag{border-color:var(--orange);background:var(--orange-soft)}
+.drop p{margin:0 0 10px;color:var(--muted)}
+.btn{
+  appearance:none;border:0;border-radius:10px;padding:10px 16px;font:inherit;font-weight:600;
+  cursor:pointer;background:var(--petrol);color:#fff;display:inline-flex;align-items:center;gap:8px;
+}
+.btn:hover{background:var(--petrol-dark)}
+.btn.secondary{background:#fff;color:var(--petrol);border:1px solid var(--petrol)}
+.btn.secondary:hover{background:var(--petrol-soft)}
+.btn.orange{background:var(--orange)}
+.btn.orange:hover{background:#cf6d14}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+input[type=file]{display:none}
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(4,1fr);margin-bottom:14px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.kpis{grid-template-columns:1fr}}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+.kpi .label{color:var(--muted);font-size:.82rem;margin-bottom:6px}
+.kpi .value{font-size:1.7rem;font-weight:750;letter-spacing:-.03em;color:var(--petrol-dark)}
+.kpi .hint{font-size:.78rem;color:var(--muted);margin-top:4px}
+.kpi.accent .value{color:var(--orange)}
+.filters{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px;align-items:end}
+@media(max-width:1000px){.filters{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.filters{grid-template-columns:1fr 1fr}}
+label.field{display:flex;flex-direction:column;gap:4px;font-size:.78rem;color:var(--muted);font-weight:600}
+select,input[type=number]{
+  border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit;background:#fff;color:var(--ink)
+}
+.charts{grid-template-columns:1fr 1fr;margin-bottom:14px}
+@media(max-width:900px){.charts{grid-template-columns:1fr}}
+.chart-title{font-size:.95rem;font-weight:700;margin:0 0 10px;display:flex;justify-content:space-between;align-items:center}
+.chart-box{width:100%;overflow:auto}
+svg.chart{width:100%;height:auto;display:block}
+.heat text{font-size:11px;fill:var(--muted)}
+.panel-title{font-size:1rem;font-weight:700;margin:0 0 10px}
+.issues{display:grid;gap:8px}
+.issue{border-left:4px solid var(--orange);background:var(--orange-soft);padding:10px 12px;border-radius:0 8px 8px 0;font-size:.9rem}
+.issue strong{color:var(--petrol-dark)}
+.issue.none{border-left-color:var(--ok);background:#e8f6ee}
+.validation{margin-bottom:14px}
+.val-ok{color:var(--ok);font-weight:600}
+.val-warn{color:var(--warn);font-weight:600}
+.val-bad{color:var(--danger);font-weight:600}
+.val-list{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:.88rem}
+.table-wrap{overflow:auto;max-height:420px;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{position:sticky;top:0;background:var(--petrol);color:#fff;font-weight:600;z-index:1}
+tr:nth-child(even) td{background:#fafbfc}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.meta{color:var(--muted);font-size:.85rem;margin-top:8px}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+.hidden{display:none !important}
+footer{margin-top:24px;color:var(--muted);font-size:.8rem;text-align:center}
+@media print{
+  .drop,.filters,.toolbar,.privacy,footer,.no-print{display:none !important}
+  body{background:#fff}
+  .card{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
+  .wrap{max-width:none;padding:0}
+  .table-wrap{max-height:none;overflow:visible}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">BA</div>
+      <div>
+        <h1>Bürgeranliegen – lokales Dashboard</h1>
+        <p class="sub">CSV laden · filtern · auswerten · exportieren</p>
+      </div>
+    </div>
+    <div class="privacy" title="FileReader liest die Datei nur im Browser">🔒 Daten bleiben lokal – nichts wird hochgeladen</div>
+  </div>
+
+  <div id="drop" class="drop">
+    <p><strong>CSV hierher ziehen</strong> oder Datei auswählen<br>
+    <span style="font-size:.85rem">Semikolon oder Komma · UTF-8 · mit oder ohne BOM</span></p>
+    <button class="btn" type="button" id="pickBtn">CSV auswählen</button>
+    <input type="file" id="file" accept=".csv,text/csv,text/plain" />
+  </div>
+
+  <section id="validation" class="card validation hidden"></section>
+
+  <section id="app" class="hidden">
+    <div class="filters card">
+      <label class="field">Stadtteil
+        <select id="fStadtteil"><option value="">Alle</option></select>
+      </label>
+      <label class="field">Kategorie
+        <select id="fKategorie"><option value="">Alle</option></select>
+      </label>
+      <label class="field">Kanal
+        <select id="fKanal"><option value="">Alle</option></select>
+      </label>
+      <label class="field">Monat von
+        <input type="number" id="fVon" min="1" max="12" placeholder="1" />
+      </label>
+      <label class="field">Monat bis
+        <input type="number" id="fBis" min="1" max="12" placeholder="12" />
+      </label>
+      <div>
+        <button class="btn secondary" type="button" id="resetFilters">Filter zurücksetzen</button>
+      </div>
+    </div>
+
+    <div class="grid kpis">
+      <div class="card kpi"><div class="label">Anliegen</div><div class="value" id="kCount">–</div><div class="hint" id="kCountHint">gefiltert</div></div>
+      <div class="card kpi"><div class="label">Ø Bearbeitungsdauer</div><div class="value" id="kDauer">–</div><div class="hint">Tage</div></div>
+      <div class="card kpi"><div class="label">Anteil offen</div><div class="value" id="kOffen">–</div><div class="hint" id="kOffenHint"></div></div>
+      <div class="card kpi accent"><div class="label">Offen + hoch</div><div class="value" id="kOffenHoch">–</div><div class="hint">Status offen &amp; Dringlichkeit hoch</div></div>
+    </div>
+
+    <div class="grid charts">
+      <div class="card"><div class="chart-title">Anliegen je Kategorie</div><div class="chart-box" id="cKat"></div></div>
+      <div class="card"><div class="chart-title">Verlauf je Monat</div><div class="chart-box" id="cMonat"></div></div>
+      <div class="card"><div class="chart-title">Kanal: Online-Formular Halbjahre <span style="font-weight:500;color:var(--muted);font-size:.8rem" id="onlineHint"></span></div><div class="chart-box" id="cOnline"></div></div>
+      <div class="card"><div class="chart-title">Ø Bearbeitungsdauer je Kategorie</div><div class="chart-box" id="cDauer"></div></div>
+      <div class="card" style="grid-column:1/-1"><div class="chart-title">Heatmap Stadtteil × Kategorie</div><div class="chart-box" id="cHeat"></div></div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px">
+      <div class="panel-title">Auffälligkeiten (regelbasiert)</div>
+      <div class="issues" id="issues"></div>
+    </div>
+
+    <div class="card">
+      <div class="panel-title">Datensätze</div>
+      <div class="toolbar no-print">
+        <button class="btn orange" type="button" id="exportBtn">Gefilterte CSV exportieren</button>
+        <button class="btn secondary" type="button" id="printBtn">Druckansicht</button>
+      </div>
+      <div class="table-wrap"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
+      <p class="meta" id="tableMeta"></p>
+    </div>
+  </section>
+
+  <div id="empty" class="card empty">Noch keine Datei geladen. Nutzen Sie die Testdaten oder Ihre CSV.</div>
+  <footer>Praxis-Werkstatt KI: Analysieren · lokales Werkzeug · keine Netzwerkanfragen</footer>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  const EXPECTED = {
+    Stadtteil: ['Altstadt','Industriegebiet','Nordstadt','Ostviertel','Südstadt','Westend'],
+    Kanal: ['E-Mail','Online-Formular','Persönlich','Telefon'],
+    Kategorie: ['Beleuchtung','Grünflächen','Lärm','Müll & Sauberkeit','Parken','Sonstiges','Straße & Verkehr'],
+    Dringlichkeit: ['hoch','mittel','niedrig'],
+    Status: ['erledigt','in Bearbeitung','offen'],
+  };
+  const COLS = ['ID','Eingangsdatum','Monat','Stadtteil','Kanal','Kategorie','Dringlichkeit','Bearbeitungsdauer_Tage','Status','Kurzbeschreibung'];
+  const PETROL = '#0F6E6E';
+  const ORANGE = '#E67E22';
+  const SOFT = ['#0F6E6E','#148787','#1a9a9a','#3aa8a8','#E67E22','#f0a35a','#5b6775','#8a96a4'];
+
+  let allRows = [];
+  let headers = [];
+
+  const $ = (id) => document.getElementById(id);
+  const drop = $('drop');
+  const fileInput = $('file');
+
+  $('pickBtn').addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files && e.target.files[0]) loadFile(e.target.files[0]);
+  });
+  ;['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, (e) => {
+    e.preventDefault(); e.stopPropagation(); drop.classList.add('drag');
+  }));
+  ;['dragleave','drop'].forEach(ev => drop.addEventListener(ev, (e) => {
+    e.preventDefault(); e.stopPropagation(); drop.classList.remove('drag');
+  }));
+  drop.addEventListener('drop', (e) => {
+    const f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f) loadFile(f);
+  });
+  $('resetFilters').addEventListener('click', resetFilters);
+  $('exportBtn').addEventListener('click', exportCSV);
+  $('printBtn').addEventListener('click', () => window.print());
+  ['fStadtteil','fKategorie','fKanal','fVon','fBis'].forEach(id => {
+    $(id).addEventListener('change', render);
+    $(id).addEventListener('input', render);
+  });
+
+  function loadFile(file){
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const text = String(reader.result || '');
+        const parsed = parseCSV(text);
+        headers = parsed.headers;
+        allRows = parsed.rows.map(normalizeRow);
+        showValidation(validate(allRows, headers));
+        fillFilterOptions(allRows);
+        resetFilters(false);
+        $('app').classList.remove('hidden');
+        $('empty').classList.add('hidden');
+        render();
+      } catch (err) {
+        showValidation({ok:false, items:['Datei konnte nicht gelesen werden: ' + (err.message || err)]});
+        console.error(err);
+      }
+    };
+    reader.onerror = () => showValidation({ok:false, items:['Lesefehler der Datei.']});
+    reader.readAsText(file); // FileReader only – no upload
+  }
+
+  function stripBOM(s){ return s.charCodeAt(0) === 0xFEFF ? s.slice(1) : s; }
+
+  function detectDelimiter(firstLine){
+    let semi=0, comma=0, inQ=false;
+    for (let i=0;i<firstLine.length;i++){
+      const c=firstLine[i];
+      if (c==='"'){ inQ=!inQ; continue; }
+      if (!inQ){ if(c===';') semi++; if(c===',') comma++; }
+    }
+    return semi >= comma ? ';' : ',';
+  }
+
+  function parseCSV(text){
+    text = stripBOM(text).replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+    if (!text.trim()) throw new Error('Leere Datei');
+    const firstLine = text.split('\n').find(l => l.trim().length) || '';
+    const delim = detectDelimiter(firstLine);
+    const rows = [];
+    let row = [];
+    let field = '';
+    let inQ = false;
+    for (let i=0;i<text.length;i++){
+      const c = text[i];
+      const n = text[i+1];
+      if (inQ){
+        if (c==='"' && n==='"'){ field+='"'; i++; }
+        else if (c==='"'){ inQ=false; }
+        else field+=c;
+      } else {
+        if (c==='"') inQ=true;
+        else if (c===delim){ row.push(field); field=''; }
+        else if (c==='\n'){ row.push(field); field=''; rows.push(row); row=[]; }
+        else field+=c;
+      }
+    }
+    if (field.length || row.length){ row.push(field); rows.push(row); }
+    // drop trailing empty line
+    while (rows.length && rows[rows.length-1].every(c => String(c).trim()==='')) rows.pop();
+    if (!rows.length) throw new Error('Keine Zeilen gefunden');
+    const hdr = rows[0].map(h => String(h).trim());
+    const data = [];
+    for (let r=1;r<rows.length;r++){
+      const obj = {};
+      for (let c=0;c<hdr.length;c++) obj[hdr[c]] = rows[r][c] != null ? String(rows[r][c]).trim() : '';
+      // skip completely empty
+      if (Object.values(obj).every(v => !v)) continue;
+      data.push(obj);
+    }
+    return {headers: hdr, rows: data, delimiter: delim};
+  }
+
+  function normalizeRow(r){
+    const o = Object.assign({}, r);
+    // Monat priorisieren; aus Datum ableiten falls leer
+    let m = parseInt(o.Monat, 10);
+    if (!Number.isFinite(m) || m < 1 || m > 12){
+      const d = String(o.Eingangsdatum || '');
+      const mm = d.match(/^\d{4}-(\d{2})-\d{2}$/);
+      m = mm ? parseInt(mm[1],10) : NaN;
+    }
+    o._monat = m;
+    o._dauer = parseInt(o.Bearbeitungsdauer_Tage, 10);
+    return o;
+  }
+
+  function validate(rows, hdr){
+    const items = [];
+    const missing = COLS.filter(c => !hdr.includes(c));
+    if (missing.length) items.push('Fehlende Spalten: ' + missing.join(', '));
+    items.push('Zeilen geladen: ' + rows.length);
+    let empty=0, badDate=0, badDauer=0, unknown=0;
+    const unk = {Stadtteil:new Set(),Kanal:new Set(),Kategorie:new Set(),Dringlichkeit:new Set(),Status:new Set()};
+    rows.forEach((r,i) => {
+      COLS.forEach(c => { if (!r[c]) empty++; });
+      if (r.Eingangsdatum && !/^\d{4}-\d{2}-\d{2}$/.test(r.Eingangsdatum)) badDate++;
+      if (!Number.isFinite(r._dauer) || r._dauer < 1 || r._dauer > 46) badDauer++;
+      Object.keys(EXPECTED).forEach(k => {
+        if (r[k] && !EXPECTED[k].includes(r[k])) { unknown++; unk[k].add(r[k]); }
+      });
+      if (!Number.isFinite(r._monat)) items.length; // counted via dauer/date
+    });
+    if (empty) items.push('Leere Pflichtfelder (Zellen): ' + empty);
+    if (badDate) items.push('Ungültiges Datumsformat (erwartet YYYY-MM-DD): ' + badDate + ' Zeile(n)');
+    if (badDauer) items.push('Bearbeitungsdauer außerhalb 1–46 oder keine Zahl: ' + badDauer + ' Zeile(n)');
+    Object.keys(unk).forEach(k => {
+      if (unk[k].size) items.push('Unbekannte ' + k + ': ' + [...unk[k]].join(', '));
+    });
+    const ok = !missing.length && !badDate && !badDauer && !unknown && !empty;
+    const mild = !missing.length && unknown===0;
+    return {ok, mild, items, n: rows.length};
+  }
+
+  function showValidation(v){
+    const el = $('validation');
+    el.classList.remove('hidden');
+    const cls = v.ok ? 'val-ok' : (v.mild ? 'val-warn' : 'val-bad');
+    const head = v.ok ? 'Plausibilität: alles in Ordnung' : (v.mild ? 'Plausibilität: Hinweise' : 'Plausibilität: Probleme gefunden');
+    el.innerHTML = '<div class="'+cls+'">'+head+'</div><ul class="val-list">'+
+      v.items.map(i => '<li>'+esc(i)+'</li>').join('') + '</ul>';
+  }
+
+  function fillFilterOptions(rows){
+    fillSelect('fStadtteil', unique(rows.map(r=>r.Stadtteil)));
+    fillSelect('fKategorie', unique(rows.map(r=>r.Kategorie)));
+    fillSelect('fKanal', unique(rows.map(r=>r.Kanal)));
+  }
+  function fillSelect(id, values){
+    const sel = $(id);
+    const cur = sel.value;
+    sel.innerHTML = '<option value="">Alle</option>' + values.map(v => '<option value="'+escAttr(v)+'">'+esc(v)+'</option>').join('');
+    sel.value = cur;
+  }
+  function unique(arr){
+    return [...new Set(arr.filter(Boolean))].sort((a,b)=>a.localeCompare(b,'de'));
+  }
+
+  function resetFilters(doRender){
+    $('fStadtteil').value='';
+    $('fKategorie').value='';
+    $('fKanal').value='';
+    $('fVon').value='';
+    $('fBis').value='';
+    if (doRender !== false) render();
+  }
+
+  function filtered(){
+    const st=$('fStadtteil').value, ka=$('fKategorie').value, kn=$('fKanal').value;
+    let von=parseInt($('fVon').value,10), bis=parseInt($('fBis').value,10);
+    if (!Number.isFinite(von)) von=1;
+    if (!Number.isFinite(bis)) bis=12;
+    if (von>bis){ const t=von; von=bis; bis=t; }
+    return allRows.filter(r => {
+      if (st && r.Stadtteil !== st) return false;
+      if (ka && r.Kategorie !== ka) return false;
+      if (kn && r.Kanal !== kn) return false;
+      if (!Number.isFinite(r._monat) || r._monat < von || r._monat > bis) return false;
+      return true;
+    });
+  }
+
+  function render(){
+    const rows = filtered();
+    renderKPIs(rows);
+    renderBar('cKat', countBy(rows,'Kategorie'), 'Anliegen');
+    renderMonth('cMonat', rows);
+    renderOnline('cOnline', rows);
+    renderDauer('cDauer', rows);
+    renderHeat('cHeat', rows);
+    renderIssues(rows);
+    renderTable(rows);
+  }
+
+  function renderKPIs(rows){
+    const n = rows.length;
+    $('kCount').textContent = String(n);
+    $('kCountHint').textContent = 'von ' + allRows.length + ' geladen';
+    const dauern = rows.map(r=>r._dauer).filter(Number.isFinite);
+    const avg = dauern.length ? (dauern.reduce((a,b)=>a+b,0)/dauern.length) : NaN;
+    $('kDauer').textContent = Number.isFinite(avg) ? avg.toFixed(1).replace('.',',') : '–';
+    const offen = rows.filter(r=>r.Status==='offen').length;
+    const pct = n ? (100*offen/n) : 0;
+    $('kOffen').textContent = n ? (pct.toFixed(1).replace('.',',') + ' %') : '–';
+    $('kOffenHint').textContent = offen + ' von ' + n;
+    $('kOffenHoch').textContent = String(rows.filter(r=>r.Status==='offen' && r.Dringlichkeit==='hoch').length);
+  }
+
+  function countBy(rows, key){
+    const m = new Map();
+    rows.forEach(r => {
+      const k = r[key] || '(leer)';
+      m.set(k, (m.get(k)||0)+1);
+    });
+    return [...m.entries()].sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0],'de'));
+  }
+
+  function meanBy(rows, key, valKey){
+    const sum = new Map(), n = new Map();
+    rows.forEach(r => {
+      const k = r[key] || '(leer)';
+      if (!Number.isFinite(r[valKey])) return;
+      sum.set(k, (sum.get(k)||0)+r[valKey]);
+      n.set(k, (n.get(k)||0)+1);
+    });
+    return [...sum.keys()].map(k => [k, sum.get(k)/n.get(k)]).sort((a,b)=>b[1]-a[1]);
+  }
+
+  function renderBar(id, entries, unit){
+    const el = $(id);
+    if (!entries.length){ el.innerHTML = '<p class="empty">Keine Daten</p>'; return; }
+    const w=560, h=Math.max(180, entries.length*28+40);
+    const pad={l:150,r:40,t:10,b:20};
+    const max = Math.max(...entries.map(e=>e[1]),1);
+    const iw = w-pad.l-pad.r;
+    let svg = '<svg class="chart" viewBox="0 0 '+w+' '+h+'" role="img">';
+    entries.forEach((e,i) => {
+      const y = pad.t + i*28;
+      const bw = (e[1]/max)*iw;
+      svg += '<text x="'+(pad.l-8)+'" y="'+(y+14)+'" text-anchor="end" font-size="12" fill="#5b6775">'+esc(e[0])+'</text>';
+      svg += '<rect x="'+pad.l+'" y="'+y+'" width="'+bw+'" height="18" rx="4" fill="'+(i%2?ORANGE:PETROL)+'"></rect>';
+      svg += '<text x="'+(pad.l+bw+6)+'" y="'+(y+14)+'" font-size="12" fill="#1a2330">'+e[1]+'</text>';
+    });
+    svg += '</svg>';
+    el.innerHTML = svg;
+  }
+
+  function renderMonth(id, rows){
+    const el = $(id);
+    const counts = Array(12).fill(0);
+    rows.forEach(r => { if (Number.isFinite(r._monat)) counts[r._monat-1]++; });
+    const max = Math.max(...counts,1);
+    const w=560,h=200, pad={l:36,r:16,t:16,b:36};
+    const iw=w-pad.l-pad.r, ih=h-pad.t-pad.b;
+    const bw = iw/12 * 0.7, gap=iw/12;
+    let svg='<svg class="chart" viewBox="0 0 '+w+' '+h+'" role="img">';
+    for(let i=0;i<12;i++){
+      const bh = (counts[i]/max)*ih;
+      const x = pad.l + i*gap + (gap-bw)/2;
+      const y = pad.t + ih - bh;
+      svg += '<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+bh+'" rx="3" fill="'+PETROL+'"></rect>';
+      svg += '<text x="'+(x+bw/2)+'" y="'+(h-12)+'" text-anchor="middle" font-size="11" fill="#5b6775">'+(i+1)+'</text>';
+      if (counts[i]) svg += '<text x="'+(x+bw/2)+'" y="'+(y-4)+'" text-anchor="middle" font-size="10" fill="#1a2330">'+counts[i]+'</text>';
+    }
+    svg += '</svg>';
+    el.innerHTML = svg;
+  }
+
+  function renderOnline(id, rows){
+    const el = $(id);
+    const of = rows.filter(r => r.Kanal === 'Online-Formular');
+    let h1=0,h2=0;
+    of.forEach(r => { if (r._monat<=6) h1++; else if (r._monat>=7) h2++; });
+    $('onlineHint').textContent = 'H1: '+h1+' · H2: '+h2;
+    // also small bars for all channels by half-year
+    const channels = unique(rows.map(r=>r.Kanal));
+    const data = channels.map(ch => {
+      const rs = rows.filter(r=>r.Kanal===ch);
+      return {ch, h1: rs.filter(r=>r._monat<=6).length, h2: rs.filter(r=>r._monat>=7).length};
+    });
+    const max = Math.max(1, ...data.flatMap(d=>[d.h1,d.h2]));
+    const w=560, h=Math.max(160, data.length*48+30);
+    const pad={l:130,r:20,t:10,b:10};
+    const iw=w-pad.l-pad.r;
+    let svg='<svg class="chart" viewBox="0 0 '+w+' '+h+'" role="img">';
+    data.forEach((d,i)=>{
+      const y=pad.t+i*48;
+      svg += '<text x="'+(pad.l-8)+'" y="'+(y+18)+'" text-anchor="end" font-size="12" fill="#5b6775">'+esc(d.ch)+'</text>';
+      const w1=(d.h1/max)*iw*0.9, w2=(d.h2/max)*iw*0.9;
+      svg += '<rect x="'+pad.l+'" y="'+y+'" width="'+w1+'" height="14" rx="3" fill="'+PETROL+'"></rect>';
+      svg += '<text x="'+(pad.l+w1+4)+'" y="'+(y+11)+'" font-size="11">H1 '+d.h1+'</text>';
+      svg += '<rect x="'+pad.l+'" y="'+(y+18)+'" width="'+w2+'" height="14" rx="3" fill="'+ORANGE+'"></rect>';
+      svg += '<text x="'+(pad.l+w2+4)+'" y="'+(y+29)+'" font-size="11">H2 '+d.h2+'</text>';
+    });
+    svg += '</svg>';
+    el.innerHTML = svg;
+  }
+
+  function renderDauer(id, rows){
+    const entries = meanBy(rows,'Kategorie','_dauer').map(([k,v])=>[k, Math.round(v*10)/10]);
+    const el = $(id);
+    if (!entries.length){ el.innerHTML='<p class="empty">Keine Daten</p>'; return; }
+    const w=560, h=Math.max(180, entries.length*28+40);
+    const pad={l:150,r:50,t:10,b:20};
+    const max=Math.max(...entries.map(e=>e[1]),1);
+    const iw=w-pad.l-pad.r;
+    let svg='<svg class="chart" viewBox="0 0 '+w+' '+h+'" role="img">';
+    entries.forEach((e,i)=>{
+      const y=pad.t+i*28;
+      const bw=(e[1]/max)*iw;
+      svg += '<text x="'+(pad.l-8)+'" y="'+(y+14)+'" text-anchor="end" font-size="12" fill="#5b6775">'+esc(e[0])+'</text>';
+      svg += '<rect x="'+pad.l+'" y="'+y+'" width="'+bw+'" height="18" rx="4" fill="'+ORANGE+'"></rect>';
+      svg += '<text x="'+(pad.l+bw+6)+'" y="'+(y+14)+'" font-size="12">'+String(e[1]).replace('.',',')+'</text>';
+    });
+    svg += '</svg>';
+    el.innerHTML = svg;
+  }
+
+  function renderHeat(id, rows){
+    const el=$(id);
+    const st = EXPECTED.Stadtteil.filter(s => rows.some(r=>r.Stadtteil===s));
+    const ka = EXPECTED.Kategorie.filter(k => rows.some(r=>r.Kategorie===k));
+    // fallback to observed
+    const städte = st.length ? st : unique(rows.map(r=>r.Stadtteil));
+    const kats = ka.length ? ka : unique(rows.map(r=>r.Kategorie));
+    if (!städte.length || !kats.length){ el.innerHTML='<p class="empty">Keine Daten</p>'; return; }
+    const matrix = städte.map(s => kats.map(k => rows.filter(r=>r.Stadtteil===s && r.Kategorie===k).length));
+    const max = Math.max(1, ...matrix.flat());
+    const cellW=96, cellH=30, lx=120, ty=44;
+    const w=lx+kats.length*cellW+20, h=ty+städte.length*cellH+20;
+    let svg='<svg class="chart heat" viewBox="0 0 '+w+' '+h+'" role="img">';
+    kats.forEach((k,j)=>{
+      const cx=lx+j*cellW+(cellW-3)/2;
+      const words=String(k).split(' ');
+      let lines=[k];
+      if (k.length>12 && words.length>1){ const m=Math.ceil(words.length/2); lines=[words.slice(0,m).join(' '), words.slice(m).join(' ')]; }
+      lines.forEach((ln,li)=>{
+        svg += '<text x="'+cx+'" y="'+(ty-8-(lines.length-1-li)*13)+'" text-anchor="middle" font-size="11">'+esc(ln)+'</text>';
+      });
+    });
+    städte.forEach((s,i)=>{
+      svg += '<text x="'+(lx-8)+'" y="'+(ty+i*cellH+18)+'" text-anchor="end" font-size="12">'+esc(s)+'</text>';
+      kats.forEach((k,j)=>{
+        const v=matrix[i][j];
+        const t=v/max;
+        const fill = lerpColor('#e6f3f3', PETROL, t);
+        svg += '<rect x="'+(lx+j*cellW)+'" y="'+(ty+i*cellH)+'" width="'+(cellW-3)+'" height="'+(cellH-3)+'" rx="4" fill="'+fill+'"></rect>';
+        svg += '<text x="'+(lx+j*cellW+(cellW-3)/2)+'" y="'+(ty+i*cellH+18)+'" text-anchor="middle" font-size="11" fill="'+(t>0.55?'#fff':'#1a2330')+'">'+v+'</text>';
+      });
+    });
+    svg += '</svg>';
+    el.innerHTML = svg;
+  }
+
+  function lerpColor(a,b,t){
+    const pa=hex(a), pb=hex(b);
+    const r=Math.round(pa[0]+(pb[0]-pa[0])*t);
+    const g=Math.round(pa[1]+(pb[1]-pa[1])*t);
+    const bl=Math.round(pa[2]+(pb[2]-pa[2])*t);
+    return 'rgb('+r+','+g+','+bl+')';
+  }
+  function hex(h){
+    h=h.replace('#','');
+    return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];
+  }
+
+  function renderIssues(rows){
+    const el=$('issues');
+    const issues=[];
+    const n=rows.length;
+    if (!n){ el.innerHTML='<div class="issue none">Keine Daten im Filter.</div>'; return; }
+    const dauern=rows.map(r=>r._dauer).filter(Number.isFinite);
+    const gAvg = dauern.length ? dauern.reduce((a,b)=>a+b,0)/dauern.length : 0;
+    meanBy(rows,'Kategorie','_dauer').forEach(([k,v])=>{
+      if (gAvg>0 && v >= 1.3*gAvg) issues.push('Kategorie <strong>'+esc(k)+'</strong> hat Ø '+v.toFixed(1).replace('.',',')+' Tage (≥ 1,3 × Gesamt-Ø '+gAvg.toFixed(1).replace('.', ',')+').');
+    });
+    const monthCounts=Array(12).fill(0);
+    rows.forEach(r=>{ if(Number.isFinite(r._monat)) monthCounts[r._monat-1]++; });
+    const active=monthCounts.filter(c=>c>0);
+    const mAvg = active.length ? active.reduce((a,b)=>a+b,0)/active.length : 0;
+    monthCounts.forEach((c,i)=>{
+      if (mAvg>0 && c >= 1.5*mAvg) issues.push('Monat <strong>'+(i+1)+'</strong> mit '+c+' Anliegen (≥ 1,5 × Monatsmittel '+mAvg.toFixed(1).replace('.',',')+').');
+    });
+    // Stadtteil mit höchstem Offen-Anteil
+    const stMap=new Map();
+    rows.forEach(r=>{
+      if(!r.Stadtteil) return;
+      const o=stMap.get(r.Stadtteil)||{n:0,offen:0};
+      o.n++; if(r.Status==='offen') o.offen++;
+      stMap.set(r.Stadtteil,o);
+    });
+    let best=null, bestPct=-1;
+    stMap.forEach((o,st)=>{
+      if(o.n>=3){ const p=o.offen/o.n; if(p>bestPct){bestPct=p; best={st,o,p};} }
+    });
+    if (best && best.o.offen>0) issues.push('Stadtteil <strong>'+esc(best.st)+'</strong> mit höchstem Offen-Anteil: '+(100*best.p).toFixed(0)+' % ('+best.o.offen+' von '+best.o.n+').');
+    // Online Anstieg
+    const of=rows.filter(r=>r.Kanal==='Online-Formular');
+    const h1=of.filter(r=>r._monat<=6).length;
+    const h2=of.filter(r=>r._monat>=7).length;
+    if (h1>0 && h2 >= 1.5*h1) issues.push('Online-Formular: starker Anstieg H2 ('+h2+') gegenüber H1 ('+h1+').');
+    else if (h1===0 && h2>0) issues.push('Online-Formular: im 1. Halbjahr 0, im 2. Halbjahr '+h2+' Anliegen.');
+
+    if (!issues.length) el.innerHTML='<div class="issue none">Keine Auffälligkeit nach den festen Regeln.</div>';
+    else el.innerHTML=issues.map(t=>'<div class="issue">'+t+'</div>').join('');
+  }
+
+  function renderTable(rows){
+    const cols = COLS.filter(c => headers.includes(c) || rows.some(r=>r[c]!=null));
+    $('thead').innerHTML = '<tr>'+cols.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr>';
+    const maxShow=500;
+    const slice=rows.slice(0,maxShow);
+    $('tbody').innerHTML = slice.map(r => '<tr>'+cols.map(c=>'<td>'+esc(r[c]||'')+'</td>').join('')+'</tr>').join('');
+    $('tableMeta').textContent = rows.length + ' Zeile(n)' + (rows.length>maxShow ? ' (Anzeige auf '+maxShow+' begrenzt, Export enthält alle)' : '');
+  }
+
+  function exportCSV(){
+    const rows=filtered();
+    const cols=COLS.filter(c => headers.includes(c) || rows.some(r=>r[c]!=null));
+    const lines=[cols.join(';')];
+    rows.forEach(r=>{
+      lines.push(cols.map(c => csvEscape(r[c]||'')).join(';'));
+    });
+    const bom='\uFEFF';
+    const blob=new Blob([bom+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='buergeranliegen_gefiltert.csv';
+    a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 2000);
+  }
+  function csvEscape(v){
+    v=String(v);
+    if (/[;"\n\r]/.test(v)) return '"'+v.replace(/"/g,'""')+'"';
+    return v;
+  }
+
+  function esc(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+  function escAttr(s){ return esc(s); }
+
+  // expose for tests
+  window.__dashboard = {
+    getAll: () => allRows,
+    getFiltered: filtered,
+    loadText: (text) => {
+      const parsed=parseCSV(text);
+      headers=parsed.headers;
+      allRows=parsed.rows.map(normalizeRow);
+      showValidation(validate(allRows, headers));
+      fillFilterOptions(allRows);
+      resetFilters(false);
+      $('app').classList.remove('hidden');
+      $('empty').classList.add('hidden');
+      render();
+      return {n: allRows.length};
+    },
+    kpis: () => ({
+      count: $('kCount').textContent,
+      dauer: $('kDauer').textContent,
+      offen: $('kOffen').textContent,
+      offenHoch: $('kOffenHoch').textContent,
+      onlineHint: $('onlineHint').textContent,
+    }),
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+ROLLE
+Du bist Front-End-Entwickler für Verwaltungsanalysen. Du baust Werkzeuge, die ohne Installation, ohne Server und ohne Cloud-Upload auf einem gesperrten Behördenrechner im Browser laufen.
+
+KONTEXT
+Ich arbeite in der öffentlichen Verwaltung. Echte Bürgerdaten darf ich keiner KI geben. Ich beschreibe dir nur das Schema meiner CSV. Du baust daraus eine einzelne HTML-Datei, die ich lokal öffne und mit meinen echten Daten fülle. Die Datei wird auf Windows mit stark eingeschränkten Rechten genutzt: kein Python, kein Node, oft blockierte CDNs/Proxys.
+
+Schema der CSV (Spaltentrenner meist Semikolon; UTF-8, ggf. mit BOM; 1 Kopfzeile):
+- ID – Text, Format BA-2025-0001
+- Eingangsdatum – Text YYYY-MM-DD (Jahr 2025)
+- Monat – ganze Zahl 1–12
+- Stadtteil – genau einer von: Altstadt | Industriegebiet | Nordstadt | Ostviertel | Südstadt | Westend
+- Kanal – genau einer von: E-Mail | Online-Formular | Persönlich | Telefon
+- Kategorie – genau einer von: Beleuchtung | Grünflächen | Lärm | Müll & Sauberkeit | Parken | Sonstiges | Straße & Verkehr
+- Dringlichkeit – genau einer von: hoch | mittel | niedrig
+- Bearbeitungsdauer_Tage – ganze Zahl 1–46
+- Status – genau einer von: erledigt | in Bearbeitung | offen
+- Kurzbeschreibung – Freitext
+
+AUFGABE
+1. Liefere zuerst 30 fiktive Testzeilen als CSV (Semikolon, UTF-8, Kopfzeile wie oben). Werte müssen zum Schema passen, aber frei erfunden sein. Keine echten Behördendaten.
+2. Liefere danach genau EINE vollständige HTML-Datei „buergeranliegen-dashboard.html“, die lokal per Doppelklick öffnet.
+
+Das HTML-Werkzeug muss können:
+- CSV laden per Dateiauswahl UND Drag & Drop (FileReader; nichts hochladen)
+- CSV robust parsen: Auto-Erkennung Semikolon/Komma, BOM entfernen, Anführungszeichen beachten
+- Kennzahlen-Kacheln (immer auf gefilterte Daten): Anzahl Anliegen, Ø Bearbeitungsdauer (1 Nachkommastelle), Anteil Status „offen“ in %, Anzahl „offen + hoch“
+- Diagramme ohne externe Bibliotheken (kein CDN, kein Chart.js, kein Google Fonts) – nur Vanilla JS + SVG oder Canvas:
+  a) Anliegen je Kategorie (Balken)
+  b) Verlauf je Monat (Linie oder Balken)
+  c) Kanal-Entwicklung: Online-Formular 1. vs. 2. Halbjahr (Monate 1–6 vs. 7–12) und optional alle Kanäle je Monat
+  d) Heatmap Stadtteil × Kategorie
+  e) Ø Bearbeitungsdauer je Kategorie (Balken)
+- Filter: Stadtteil, Kategorie, Kanal, Zeitraum Monat von–bis; Filter wirken auf Kacheln, Diagramme, Tabelle und Auffälligkeiten
+- Auffälligkeiten-Liste mit festen Regeln (nicht erfinden):
+  • Kategorie mit Ø-Dauer ≥ 1,3 × Gesamt-Ø
+  • Monat mit ≥ 1,5 × mittlerer Monatsanzahl
+  • Stadtteil mit dem höchsten Anteil an „offen“
+  • Online-Formular: wenn 2. Halbjahr ≥ 1,5 × 1. Halbjahr → „starker Anstieg Online“
+- Plausibilitätsprüfung beim Laden, sichtbar: Zeilenzahl, leere Pflichtfelder, ungültige Datumsformate, unbekannte Stadtteil/Kanal/Kategorie/Status/Dringlichkeit, Bearbeitungsdauer außerhalb 1–46
+- Tabelle der (gefilterten) Datensätze
+- Export der gefilterten Tabelle als CSV (Semikolon, UTF-8-BOM)
+- Druckansicht (CSS @media print)
+- Dauerhafter Hinweis: „Daten bleiben lokal – nichts wird hochgeladen.“
+
+FORMAT
+Antwort in genau zwei Teilen:
+A) Codeblock „testdaten.csv“ mit den 30 fiktiven Zeilen
+B) Codeblock „buergeranliegen-dashboard.html“ mit der kompletten Datei (DOCTYPE, Head, Body, Inline-CSS, Inline-JS – alles in einer Datei)
+Gestaltung: modern, klar, responsiv; Farben Petrol (#0F6E6E) und Orange (#E67E22); deutsche Beschriftungen; Schrift system-ui.
+
+PRÜFAUFTRAG / GRENZEN
+- Keine externen Ressourcen (kein CDN, kein Font, kein Analytics).
+- Keine echten Datenwerte erfinden oder „raten“ – nur Schema und die 30 Testzeilen.
+- Keine Netzwerkanfragen im HTML.
+- Parser und Filter müssen mit Semikolon-CSV und Text-Daten YYYY-MM-DD funktionieren (Eingangsdatum oft als Text, nicht als Excel-Datum).
+- Wenn Monat und Eingangsdatum widersprechen, Monat-Spalte für Filter/Halbjahre priorisieren.
+- Am Ende kurz (3–5 Stichpunkte): Wie teste ich das Werkzeug lokal mit den Testdaten und später mit Echtdaten.

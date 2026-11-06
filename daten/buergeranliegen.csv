@@ -1,0 +1,151 @@
+﻿ID;Eingangsdatum;Monat;Stadtteil;Kanal;Kategorie;Dringlichkeit;Bearbeitungsdauer_Tage;Status;Kurzbeschreibung
+BA-2025-0001;2025-01-02;1;Nordstadt;Persönlich;Müll & Sauberkeit;mittel;9;in Bearbeitung;Überlaufender Altglascontainer
+BA-2025-0002;2025-01-12;1;Nordstadt;Persönlich;Sonstiges;mittel;4;in Bearbeitung;Hinweis auf lose Fliese am Eingang
+BA-2025-0003;2025-01-17;1;Industriegebiet;E-Mail;Lärm;hoch;4;erledigt;Laute Musik aus Gewerbe
+BA-2025-0004;2025-01-20;1;Ostviertel;Online-Formular;Beleuchtung;mittel;9;erledigt;Ausgefallene Parkplatzbeleuchtung
+BA-2025-0005;2025-01-20;1;Altstadt;Persönlich;Straße & Verkehr;mittel;39;erledigt;Ampelschaltung unklar an Kreuzung
+BA-2025-0006;2025-01-22;1;Industriegebiet;E-Mail;Müll & Sauberkeit;mittel;7;erledigt;Verschmutzte Sitzbank im Park
+BA-2025-0007;2025-01-24;1;Altstadt;Persönlich;Sonstiges;mittel;11;erledigt;Anregung zur Beschilderung
+BA-2025-0008;2025-01-25;1;Ostviertel;Telefon;Beleuchtung;hoch;8;offen;Ausgefallene Parkplatzbeleuchtung
+BA-2025-0009;2025-01-26;1;Ostviertel;Telefon;Sonstiges;hoch;9;erledigt;Hinweis auf defekten Briefkasten
+BA-2025-0010;2025-01-27;1;Ostviertel;E-Mail;Lärm;mittel;10;offen;Laute Musik aus Gewerbe
+BA-2025-0011;2025-02-03;2;Westend;E-Mail;Müll & Sauberkeit;niedrig;10;erledigt;Überfüllter Papiercontainer
+BA-2025-0012;2025-02-05;2;Ostviertel;Persönlich;Straße & Verkehr;hoch;40;in Bearbeitung;Baustellenampel ohne Anzeige
+BA-2025-0013;2025-02-06;2;Industriegebiet;Telefon;Lärm;mittel;10;erledigt;Nachtlärm durch Anlieferverkehr
+BA-2025-0014;2025-02-07;2;Südstadt;E-Mail;Grünflächen;hoch;9;erledigt;Überhängende Äste am Weg
+BA-2025-0015;2025-02-10;2;Altstadt;Telefon;Sonstiges;hoch;10;erledigt;Sonstige Meldung ohne Kategoriezuordnung
+BA-2025-0016;2025-02-10;2;Nordstadt;Persönlich;Parken;mittel;12;erledigt;Parkplätze durch Lieferwagen belegt
+BA-2025-0017;2025-02-11;2;Ostviertel;Online-Formular;Straße & Verkehr;hoch;26;erledigt;Fahrbahnmarkierung abgefahren
+BA-2025-0018;2025-02-13;2;Westend;E-Mail;Müll & Sauberkeit;niedrig;3;in Bearbeitung;Verschmutzte Bushaltestelle
+BA-2025-0019;2025-02-19;2;Nordstadt;Persönlich;Sonstiges;niedrig;7;offen;Sonstige Meldung ohne Kategoriezuordnung
+BA-2025-0020;2025-02-23;2;Nordstadt;Telefon;Straße & Verkehr;mittel;27;erledigt;Fahrbahnmarkierung abgefahren
+BA-2025-0021;2025-02-26;2;Ostviertel;Persönlich;Straße & Verkehr;hoch;45;erledigt;Fahrbahnmarkierung abgefahren
+BA-2025-0022;2025-03-01;3;Altstadt;Telefon;Parken;niedrig;6;in Bearbeitung;Zu wenige Anwohnerparkplätze
+BA-2025-0023;2025-03-03;3;Südstadt;E-Mail;Müll & Sauberkeit;niedrig;5;erledigt;Glasscherben auf Spielplatz
+BA-2025-0024;2025-03-04;3;Ostviertel;E-Mail;Beleuchtung;mittel;2;offen;Dunkler Fußweg ohne Licht
+BA-2025-0025;2025-03-10;3;Industriegebiet;E-Mail;Müll & Sauberkeit;mittel;2;in Bearbeitung;Überfüllter Papiercontainer
+BA-2025-0026;2025-03-12;3;Altstadt;Persönlich;Straße & Verkehr;hoch;36;in Bearbeitung;Unebene Gehwegplatten
+BA-2025-0027;2025-03-12;3;Industriegebiet;E-Mail;Lärm;niedrig;8;in Bearbeitung;Nachtlärm durch Anlieferverkehr
+BA-2025-0028;2025-03-17;3;Altstadt;E-Mail;Parken;mittel;4;offen;Behindertenparkplatz missbraucht
+BA-2025-0029;2025-03-22;3;Industriegebiet;Persönlich;Grünflächen;mittel;11;erledigt;Überhängende Äste am Weg
+BA-2025-0030;2025-03-25;3;Industriegebiet;Online-Formular;Lärm;niedrig;12;in Bearbeitung;Dauerndes Hupen an Engstelle
+BA-2025-0031;2025-03-29;3;Industriegebiet;Telefon;Lärm;mittel;5;offen;Laute Musik aus Gewerbe
+BA-2025-0032;2025-03-30;3;Ostviertel;E-Mail;Müll & Sauberkeit;niedrig;4;erledigt;Überlaufender Altglascontainer
+BA-2025-0033;2025-04-01;4;Ostviertel;E-Mail;Müll & Sauberkeit;niedrig;8;erledigt;Verschmutzte Bushaltestelle
+BA-2025-0034;2025-04-01;4;Ostviertel;E-Mail;Straße & Verkehr;mittel;17;offen;Fahrbahnmarkierung abgefahren
+BA-2025-0035;2025-04-09;4;Industriegebiet;Online-Formular;Müll & Sauberkeit;mittel;10;erledigt;Glasscherben auf Spielplatz
+BA-2025-0036;2025-04-11;4;Nordstadt;Telefon;Sonstiges;hoch;14;erledigt;Hinweis auf defekten Briefkasten
+BA-2025-0037;2025-04-16;4;Altstadt;E-Mail;Müll & Sauberkeit;mittel;9;in Bearbeitung;Überfüllter Papiercontainer
+BA-2025-0038;2025-04-18;4;Südstadt;Telefon;Lärm;hoch;5;erledigt;Dauerndes Hupen an Engstelle
+BA-2025-0039;2025-04-21;4;Industriegebiet;Persönlich;Parken;mittel;10;erledigt;Unklare Parkbeschilderung
+BA-2025-0040;2025-04-23;4;Industriegebiet;Telefon;Lärm;hoch;8;erledigt;Laute Musik aus Gewerbe
+BA-2025-0041;2025-04-26;4;Industriegebiet;E-Mail;Müll & Sauberkeit;niedrig;5;erledigt;Illegale Müllablagerung am Wegesrand
+BA-2025-0042;2025-04-27;4;Westend;Telefon;Sonstiges;hoch;9;erledigt;Sonstige Meldung ohne Kategoriezuordnung
+BA-2025-0043;2025-05-03;5;Südstadt;Telefon;Grünflächen;mittel;12;offen;Spielgeräte brauchen Wartung
+BA-2025-0044;2025-05-04;5;Industriegebiet;Persönlich;Lärm;mittel;6;erledigt;Dauerndes Hupen an Engstelle
+BA-2025-0045;2025-05-08;5;Ostviertel;Online-Formular;Beleuchtung;mittel;2;erledigt;Ausgefallene Parkplatzbeleuchtung
+BA-2025-0046;2025-05-13;5;Nordstadt;Telefon;Parken;niedrig;10;offen;Fehlende Kurzparkzonen
+BA-2025-0047;2025-05-14;5;Ostviertel;Online-Formular;Müll & Sauberkeit;mittel;6;erledigt;Glasscherben auf Spielplatz
+BA-2025-0048;2025-05-17;5;Westend;Telefon;Straße & Verkehr;niedrig;16;offen;Unebene Gehwegplatten
+BA-2025-0049;2025-05-18;5;Nordstadt;Online-Formular;Straße & Verkehr;mittel;29;erledigt;Ampelschaltung unklar an Kreuzung
+BA-2025-0050;2025-05-18;5;Altstadt;Online-Formular;Straße & Verkehr;mittel;21;erledigt;Ampelschaltung unklar an Kreuzung
+BA-2025-0051;2025-05-21;5;Ostviertel;Telefon;Straße & Verkehr;hoch;26;erledigt;Schlagloch in Fahrbahn gemeldet
+BA-2025-0052;2025-05-26;5;Südstadt;Online-Formular;Parken;niedrig;3;erledigt;Zu wenige Anwohnerparkplätze
+BA-2025-0053;2025-06-05;6;Industriegebiet;Online-Formular;Lärm;niedrig;16;in Bearbeitung;Nachtlärm durch Anlieferverkehr
+BA-2025-0054;2025-06-05;6;Südstadt;Online-Formular;Lärm;hoch;9;erledigt;Bauarbeiten außerhalb der Zeiten
+BA-2025-0055;2025-06-06;6;Westend;Telefon;Grünflächen;mittel;9;erledigt;Unkrautbewuchs auf Grünstreifen
+BA-2025-0056;2025-06-09;6;Nordstadt;Online-Formular;Beleuchtung;mittel;7;erledigt;Ausgefallene Parkplatzbeleuchtung
+BA-2025-0057;2025-06-12;6;Ostviertel;E-Mail;Grünflächen;mittel;20;erledigt;Beschädigte Parkbank
+BA-2025-0058;2025-06-14;6;Nordstadt;E-Mail;Grünflächen;mittel;20;offen;Unkrautbewuchs auf Grünstreifen
+BA-2025-0059;2025-06-14;6;Altstadt;Telefon;Grünflächen;hoch;15;in Bearbeitung;Beschädigte Parkbank
+BA-2025-0060;2025-06-15;6;Nordstadt;Persönlich;Grünflächen;mittel;11;erledigt;Trockenheitsschäden an Beeten
+BA-2025-0061;2025-06-20;6;Industriegebiet;Telefon;Grünflächen;mittel;16;in Bearbeitung;Trockenheitsschäden an Beeten
+BA-2025-0062;2025-06-20;6;Industriegebiet;Online-Formular;Sonstiges;mittel;3;erledigt;Anregung zur Beschilderung
+BA-2025-0063;2025-06-22;6;Ostviertel;Telefon;Beleuchtung;hoch;4;in Bearbeitung;Ausgefallene Parkplatzbeleuchtung
+BA-2025-0064;2025-06-22;6;Nordstadt;Telefon;Grünflächen;niedrig;13;offen;Beschädigte Parkbank
+BA-2025-0065;2025-06-24;6;Industriegebiet;Persönlich;Sonstiges;hoch;13;in Bearbeitung;Allgemeine Anfrage zur Zuständigkeit
+BA-2025-0066;2025-06-25;6;Ostviertel;Telefon;Parken;niedrig;12;offen;Falschparker blockieren Einfahrt
+BA-2025-0067;2025-06-26;6;Altstadt;Telefon;Parken;mittel;8;offen;Falschparker blockieren Einfahrt
+BA-2025-0068;2025-06-30;6;Nordstadt;Online-Formular;Grünflächen;mittel;18;erledigt;Unkrautbewuchs auf Grünstreifen
+BA-2025-0069;2025-06-30;6;Ostviertel;Telefon;Grünflächen;mittel;20;erledigt;Unkrautbewuchs auf Grünstreifen
+BA-2025-0070;2025-07-01;7;Industriegebiet;E-Mail;Beleuchtung;mittel;8;in Bearbeitung;Flackernde Beleuchtung an Unterführung
+BA-2025-0071;2025-07-01;7;Südstadt;Online-Formular;Grünflächen;niedrig;8;erledigt;Beschädigte Parkbank
+BA-2025-0072;2025-07-01;7;Ostviertel;Telefon;Grünflächen;hoch;20;in Bearbeitung;Unkrautbewuchs auf Grünstreifen
+BA-2025-0073;2025-07-01;7;Ostviertel;Telefon;Grünflächen;niedrig;17;erledigt;Trockenheitsschäden an Beeten
+BA-2025-0074;2025-07-05;7;Südstadt;Telefon;Straße & Verkehr;niedrig;43;erledigt;Unebene Gehwegplatten
+BA-2025-0075;2025-07-05;7;Industriegebiet;E-Mail;Grünflächen;hoch;14;erledigt;Spielgeräte brauchen Wartung
+BA-2025-0076;2025-07-06;7;Südstadt;Telefon;Grünflächen;mittel;7;erledigt;Überhängende Äste am Weg
+BA-2025-0077;2025-07-09;7;Altstadt;E-Mail;Müll & Sauberkeit;mittel;4;erledigt;Verschmutzte Bushaltestelle
+BA-2025-0078;2025-07-15;7;Ostviertel;Online-Formular;Grünflächen;mittel;12;erledigt;Rasenmähung überfällig
+BA-2025-0079;2025-07-15;7;Altstadt;Telefon;Parken;mittel;9;erledigt;Falschparker blockieren Einfahrt
+BA-2025-0080;2025-07-17;7;Nordstadt;Telefon;Müll & Sauberkeit;niedrig;6;in Bearbeitung;Verschmutzte Sitzbank im Park
+BA-2025-0081;2025-07-19;7;Nordstadt;Online-Formular;Grünflächen;hoch;11;erledigt;Spielgeräte brauchen Wartung
+BA-2025-0082;2025-07-19;7;Industriegebiet;Telefon;Straße & Verkehr;mittel;33;in Bearbeitung;Fahrbahnmarkierung abgefahren
+BA-2025-0083;2025-07-22;7;Industriegebiet;Telefon;Lärm;hoch;16;in Bearbeitung;Party-Lärm bis in die Nacht
+BA-2025-0084;2025-07-23;7;Altstadt;Persönlich;Grünflächen;hoch;17;in Bearbeitung;Spielgeräte brauchen Wartung
+BA-2025-0085;2025-07-23;7;Altstadt;Persönlich;Grünflächen;mittel;12;erledigt;Überhängende Äste am Weg
+BA-2025-0086;2025-07-25;7;Industriegebiet;Telefon;Parken;mittel;6;erledigt;Unklare Parkbeschilderung
+BA-2025-0087;2025-07-30;7;Altstadt;Online-Formular;Grünflächen;mittel;19;erledigt;Unkrautbewuchs auf Grünstreifen
+BA-2025-0088;2025-08-01;8;Altstadt;Telefon;Straße & Verkehr;mittel;44;erledigt;Schlagloch in Fahrbahn gemeldet
+BA-2025-0089;2025-08-02;8;Industriegebiet;Telefon;Grünflächen;mittel;9;erledigt;Beschädigte Parkbank
+BA-2025-0090;2025-08-03;8;Nordstadt;E-Mail;Grünflächen;mittel;11;erledigt;Trockenheitsschäden an Beeten
+BA-2025-0091;2025-08-12;8;Westend;Online-Formular;Grünflächen;niedrig;18;erledigt;Überhängende Äste am Weg
+BA-2025-0092;2025-08-14;8;Nordstadt;Telefon;Grünflächen;hoch;8;offen;Beschädigte Parkbank
+BA-2025-0093;2025-08-14;8;Industriegebiet;Telefon;Grünflächen;niedrig;20;erledigt;Beschädigte Parkbank
+BA-2025-0094;2025-08-16;8;Ostviertel;Telefon;Grünflächen;niedrig;12;erledigt;Rasenmähung überfällig
+BA-2025-0095;2025-08-18;8;Südstadt;Online-Formular;Grünflächen;mittel;7;erledigt;Beschädigte Parkbank
+BA-2025-0096;2025-08-18;8;Nordstadt;E-Mail;Grünflächen;mittel;17;offen;Unkrautbewuchs auf Grünstreifen
+BA-2025-0097;2025-08-19;8;Industriegebiet;Telefon;Grünflächen;mittel;15;offen;Spielgeräte brauchen Wartung
+BA-2025-0098;2025-08-20;8;Altstadt;Persönlich;Grünflächen;mittel;16;offen;Spielgeräte brauchen Wartung
+BA-2025-0099;2025-08-20;8;Industriegebiet;Telefon;Grünflächen;hoch;20;erledigt;Rasenmähung überfällig
+BA-2025-0100;2025-08-23;8;Südstadt;E-Mail;Grünflächen;hoch;19;erledigt;Spielgeräte brauchen Wartung
+BA-2025-0101;2025-08-25;8;Industriegebiet;Persönlich;Lärm;mittel;10;offen;Dauerndes Hupen an Engstelle
+BA-2025-0102;2025-08-27;8;Industriegebiet;Online-Formular;Straße & Verkehr;hoch;26;erledigt;Beschädigtes Verkehrsschild
+BA-2025-0103;2025-08-29;8;Ostviertel;E-Mail;Grünflächen;niedrig;7;erledigt;Überhängende Äste am Weg
+BA-2025-0104;2025-08-29;8;Westend;Online-Formular;Straße & Verkehr;mittel;45;erledigt;Fahrbahnmarkierung abgefahren
+BA-2025-0105;2025-08-31;8;Westend;E-Mail;Beleuchtung;mittel;8;in Bearbeitung;Ausgefallene Parkplatzbeleuchtung
+BA-2025-0106;2025-09-03;9;Westend;E-Mail;Müll & Sauberkeit;niedrig;1;erledigt;Überfüllter Papiercontainer
+BA-2025-0107;2025-09-05;9;Nordstadt;Online-Formular;Lärm;hoch;13;in Bearbeitung;Nachtlärm durch Anlieferverkehr
+BA-2025-0108;2025-09-05;9;Nordstadt;Online-Formular;Straße & Verkehr;mittel;43;in Bearbeitung;Schlagloch in Fahrbahn gemeldet
+BA-2025-0109;2025-09-13;9;Ostviertel;Telefon;Straße & Verkehr;hoch;34;in Bearbeitung;Beschädigtes Verkehrsschild
+BA-2025-0110;2025-09-15;9;Industriegebiet;Online-Formular;Müll & Sauberkeit;niedrig;4;in Bearbeitung;Verschmutzte Sitzbank im Park
+BA-2025-0111;2025-09-15;9;Industriegebiet;Telefon;Lärm;mittel;15;erledigt;Maschinenlärm am Wochenende
+BA-2025-0112;2025-09-17;9;Nordstadt;Online-Formular;Parken;mittel;3;in Bearbeitung;Falschparker blockieren Einfahrt
+BA-2025-0113;2025-09-20;9;Industriegebiet;E-Mail;Lärm;hoch;16;erledigt;Party-Lärm bis in die Nacht
+BA-2025-0114;2025-09-20;9;Ostviertel;Online-Formular;Beleuchtung;mittel;6;offen;Ausgefallene Parkplatzbeleuchtung
+BA-2025-0115;2025-09-23;9;Nordstadt;Telefon;Müll & Sauberkeit;mittel;3;in Bearbeitung;Verschmutzte Sitzbank im Park
+BA-2025-0116;2025-09-25;9;Altstadt;E-Mail;Parken;mittel;6;in Bearbeitung;Zu wenige Anwohnerparkplätze
+BA-2025-0117;2025-09-27;9;Westend;Telefon;Beleuchtung;mittel;1;erledigt;Dunkle Stelle an Fußgängerüberweg
+BA-2025-0118;2025-10-06;10;Ostviertel;Online-Formular;Lärm;hoch;6;erledigt;Laute Musik aus Gewerbe
+BA-2025-0119;2025-10-07;10;Altstadt;Telefon;Straße & Verkehr;hoch;26;offen;Beschädigtes Verkehrsschild
+BA-2025-0120;2025-10-11;10;Industriegebiet;Online-Formular;Beleuchtung;niedrig;4;erledigt;Laterne leuchtet tagsüber
+BA-2025-0121;2025-10-14;10;Altstadt;E-Mail;Beleuchtung;mittel;5;erledigt;Laterne leuchtet tagsüber
+BA-2025-0122;2025-10-18;10;Nordstadt;Telefon;Straße & Verkehr;niedrig;45;in Bearbeitung;Baustellenampel ohne Anzeige
+BA-2025-0123;2025-10-19;10;Südstadt;Telefon;Parken;hoch;5;erledigt;Unklare Parkbeschilderung
+BA-2025-0124;2025-10-20;10;Nordstadt;Online-Formular;Lärm;mittel;6;erledigt;Party-Lärm bis in die Nacht
+BA-2025-0125;2025-10-21;10;Industriegebiet;Telefon;Parken;hoch;12;erledigt;Zu wenige Anwohnerparkplätze
+BA-2025-0126;2025-10-23;10;Industriegebiet;Online-Formular;Straße & Verkehr;mittel;44;erledigt;Unebene Gehwegplatten
+BA-2025-0127;2025-10-25;10;Ostviertel;Online-Formular;Müll & Sauberkeit;niedrig;4;erledigt;Glasscherben auf Spielplatz
+BA-2025-0128;2025-10-27;10;Industriegebiet;Online-Formular;Lärm;hoch;7;in Bearbeitung;Laute Musik aus Gewerbe
+BA-2025-0129;2025-10-28;10;Altstadt;Online-Formular;Müll & Sauberkeit;niedrig;3;offen;Illegale Müllablagerung am Wegesrand
+BA-2025-0130;2025-11-05;11;Altstadt;Telefon;Parken;hoch;11;erledigt;Parkplätze durch Lieferwagen belegt
+BA-2025-0131;2025-11-09;11;Nordstadt;Online-Formular;Müll & Sauberkeit;hoch;7;in Bearbeitung;Verschmutzte Sitzbank im Park
+BA-2025-0132;2025-11-09;11;Nordstadt;Telefon;Parken;mittel;3;offen;Parkplätze durch Lieferwagen belegt
+BA-2025-0133;2025-11-11;11;Nordstadt;Online-Formular;Müll & Sauberkeit;mittel;4;erledigt;Überlaufender Altglascontainer
+BA-2025-0134;2025-11-12;11;Nordstadt;Persönlich;Beleuchtung;hoch;6;in Bearbeitung;Dunkle Stelle an Fußgängerüberweg
+BA-2025-0135;2025-11-13;11;Südstadt;E-Mail;Beleuchtung;niedrig;8;in Bearbeitung;Laterne leuchtet tagsüber
+BA-2025-0136;2025-11-14;11;Nordstadt;Online-Formular;Straße & Verkehr;hoch;21;erledigt;Baustellenampel ohne Anzeige
+BA-2025-0137;2025-11-14;11;Nordstadt;Persönlich;Müll & Sauberkeit;mittel;10;erledigt;Überlaufender Altglascontainer
+BA-2025-0138;2025-11-22;11;Südstadt;Online-Formular;Parken;mittel;6;in Bearbeitung;Behindertenparkplatz missbraucht
+BA-2025-0139;2025-11-24;11;Südstadt;Telefon;Beleuchtung;hoch;6;in Bearbeitung;Dunkle Stelle an Fußgängerüberweg
+BA-2025-0140;2025-11-27;11;Westend;Telefon;Beleuchtung;mittel;4;in Bearbeitung;Dunkler Fußweg ohne Licht
+BA-2025-0141;2025-11-30;11;Industriegebiet;Telefon;Lärm;mittel;12;erledigt;Bauarbeiten außerhalb der Zeiten
+BA-2025-0142;2025-12-02;12;Westend;E-Mail;Parken;hoch;3;in Bearbeitung;Zu wenige Anwohnerparkplätze
+BA-2025-0143;2025-12-06;12;Nordstadt;E-Mail;Sonstiges;hoch;14;erledigt;Hinweis auf defekten Briefkasten
+BA-2025-0144;2025-12-07;12;Altstadt;Online-Formular;Straße & Verkehr;hoch;33;in Bearbeitung;Baustellenampel ohne Anzeige
+BA-2025-0145;2025-12-11;12;Nordstadt;Telefon;Parken;mittel;6;erledigt;Zu wenige Anwohnerparkplätze
+BA-2025-0146;2025-12-11;12;Westend;Online-Formular;Straße & Verkehr;mittel;46;in Bearbeitung;Ampelschaltung unklar an Kreuzung
+BA-2025-0147;2025-12-17;12;Industriegebiet;E-Mail;Lärm;niedrig;5;erledigt;Bauarbeiten außerhalb der Zeiten
+BA-2025-0148;2025-12-22;12;Altstadt;Online-Formular;Müll & Sauberkeit;mittel;10;erledigt;Verschmutzte Sitzbank im Park
+BA-2025-0149;2025-12-22;12;Westend;Telefon;Lärm;mittel;14;erledigt;Party-Lärm bis in die Nacht
+BA-2025-0150;2025-12-26;12;Westend;Online-Formular;Beleuchtung;mittel;2;in Bearbeitung;Defekte Straßenlaterne

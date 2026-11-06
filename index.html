@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Praxis-Werkstatt KI: Analysieren</title>
+  <style>
+    :root {
+      --petrol: #0f5c66;
+      --petrol-dark: #0c4c54;
+      --ink: #142e33;
+      --muted: #2f4c51;
+      --cream: #fff8f1;
+      --paper: #fffdfb;
+      --line: #d7e2df;
+      --orange: #f28c28;
+      --focus: #102e33;
+      --soft: #e7f2f1;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, Arial, sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.45;
+    }
+
+    .hero,
+    .stack {
+      width: min(1440px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .hero {
+      margin-top: 1.25rem;
+      padding: 2rem 1.6rem 1.8rem;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(15, 92, 102, 0.96), rgba(12, 76, 84, 0.92)),
+        repeating-linear-gradient(
+          -12deg,
+          transparent,
+          transparent 12px,
+          rgba(255, 255, 255, 0.03) 12px,
+          rgba(255, 255, 255, 0.03) 24px
+        );
+      color: #f7fbfb;
+      box-shadow: 0 12px 28px rgba(15, 92, 102, 0.16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(242, 140, 40, 0.22);
+      pointer-events: none;
+    }
+
+    .hero-copy { position: relative; z-index: 1; max-width: 42rem; }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--petrol);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero .eyebrow { color: #f7fbfb; opacity: 0.92; }
+
+    h1 {
+      margin: 0.35rem 0 0.6rem;
+      font-size: clamp(1.9rem, 6vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 40rem;
+      color: #e7f4f3;
+    }
+
+    .stack {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.35rem;
+    }
+
+    .section-title {
+      margin: 0.6rem 0 0;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--petrol);
+    }
+
+    .split {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      min-height: 9.5rem;
+      padding: 1.35rem 1.4rem 1.45rem;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3vw, 1.6rem);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+    }
+
+    .card p:last-child {
+      margin: 0.15rem 0 0;
+      color: var(--muted);
+    }
+
+    .card-primary {
+      min-height: 11.5rem;
+      padding: 1.7rem 1.6rem 1.8rem;
+      border: 0;
+      border-left: 8px solid var(--orange);
+      background: var(--petrol);
+      color: #f7fbfb;
+      box-shadow: 0 12px 28px rgba(15, 92, 102, 0.16);
+    }
+
+    .card-primary .eyebrow { color: #f7fbfb; }
+
+    .card-primary h2 {
+      font-size: clamp(1.85rem, 4vw, 2.35rem);
+    }
+
+    .card-primary p:last-child {
+      max-width: 46rem;
+      color: #e7f4f3;
+      font-size: 1.15rem;
+    }
+
+    .card:hover { border-color: var(--petrol); }
+
+    .card-primary:hover { background: var(--petrol-dark); }
+
+    .card:active { background: #f4faf9; }
+
+    .card-primary:active { background: #0a4249; }
+
+    .card:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .card-primary:focus-visible {
+      outline-color: #fff8f1;
+      box-shadow: 0 0 0 6px var(--focus);
+    }
+
+    .card-placeholder {
+      border-style: dashed;
+      background: var(--soft);
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 0.35rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(242, 140, 40, 0.18);
+      color: var(--petrol-dark);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .card-primary .badge {
+      background: rgba(255, 248, 241, 0.18);
+      color: #fff8f1;
+    }
+
+    footer {
+      width: min(1440px, calc(100% - 2rem));
+      margin: 0.4rem auto 1.5rem;
+      padding-top: 0.85rem;
+    }
+
+    footer p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (min-width: 800px) {
+      .split { grid-template-columns: 1fr 1fr; }
+      .split-3 { grid-template-columns: 1fr 1fr 1fr; }
+      .card { min-height: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">VHS-Tageskurs · 9–14 Uhr</p>
+      <h1>Praxis-Werkstatt KI: Analysieren</h1>
+      <p class="lead">Herzlich willkommen. Heute üben Sie die strukturierte Auswertung von Texten und Tabellen mit ChatGPT, Mistral&nbsp;Le&nbsp;Chat und Claude – inklusive Plausibilitätscheck und Entscheidungsvorlage.</p>
+    </div>
+  </header>
+
+  <main class="stack">
+    <!-- ===== MIRO-LINK: vor Kursbeginn durch echten Board-Link ersetzen ===== -->
+    <a class="card card-primary card-placeholder" href="#miro-platzhalter">
+      <p class="eyebrow">Gemeinsames Arbeitsboard</p>
+      <h2>Zum Miro-Board</h2>
+      <p>Hier entsteht das gemeinsame Kursboard mit Stationen, Prompt-Bausteinen und Ergebnisflächen. <strong>Platzhalter – Link folgt.</strong></p>
+      <span class="badge">Platzhalter</span>
+    </a>
+    <!-- ===== ENDE MIRO-LINK ===== -->
+
+    <!-- ===== TEAMS-LINK: vor Kursbeginn ersetzen ===== -->
+    <a class="card card-placeholder" href="#teams-platzhalter">
+      <p class="eyebrow">Für den Beamer</p>
+      <h2>Teams-Meeting</h2>
+      <p>Darüber zeigen Teilnehmende ihren Bildschirm, damit einzelne Ergebnisse auf den Beamer kommen. <strong>Platzhalter – Link folgt.</strong></p>
+      <span class="badge">Platzhalter</span>
+    </a>
+    <!-- ===== ENDE TEAMS-LINK ===== -->
+
+    <p class="section-title">Übungsdaten</p>
+    <div class="split">
+      <a class="card" href="daten/buergeranliegen.csv" download="buergeranliegen.csv">
+        <p class="eyebrow">CSV · Excel DE</p>
+        <h2>Bürgeranliegen (CSV)</h2>
+        <p>Fiktive Jahresübersicht Musterstadt 2025 (UTF-8 mit BOM, Semikolon). Für Station Datenanalyse und Dashboard.</p>
+      </a>
+      <a class="card" href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">
+        <p class="eyebrow">Excel</p>
+        <h2>Bürgeranliegen (XLSX)</h2>
+        <p>Dieselbe Tabelle als Excel-Datei – falls der CSV-Import im Tool hakelt.</p>
+      </a>
+    </div>
+
+    <div class="split">
+      <a class="card" href="daten/aufwaermen_mini.csv" download="aufwaermen_mini.csv">
+        <p class="eyebrow">Station 1</p>
+        <h2>Aufwärmen – Mini-Tabelle</h2>
+        <p>Kurze Übersicht mit einem versteckten Rechenfehler. Zum Einstieg in den Plausibilitätscheck.</p>
+      </a>
+      <a class="card" href="daten/ki_ergebnis_fehlerbingo.docx" download="ki_ergebnis_fehlerbingo.docx">
+        <p class="eyebrow">Station 5 · DOCX</p>
+        <h2>KI-Ergebnis fürs Fehler-Bingo</h2>
+        <p>Vorbereitetes Analyseergebnis zur Bürgeranliegen-CSV – zum Prüfen mit der Checkliste.</p>
+      </a>
+    </div>
+
+    <div class="split">
+      <a class="card" href="daten/stellungnahme_a.docx" download="stellungnahme_a.docx">
+        <p class="eyebrow">Station 4 · DOCX</p>
+        <h2>Stellungnahme A</h2>
+        <p>Bürgerinitiative „Grünes Zentrum Musterstadt“ – Pro Umwandlung Parkplatz zu Grünfläche.</p>
+      </a>
+      <a class="card" href="daten/stellungnahme_b.docx" download="stellungnahme_b.docx">
+        <p class="eyebrow">Station 4 · DOCX</p>
+        <h2>Stellungnahme B</h2>
+        <p>Einzelhandelsverband Musterstadt – Contra vollständige Umwandlung, Kompromissvorschlag.</p>
+      </a>
+    </div>
+
+    <p class="section-title">Werkzeuge (nur kostenlose Accounts)</p>
+    <div class="split split-3">
+      <a class="card" href="https://chatgpt.com/" target="_blank" rel="noopener">
+        <p class="eyebrow">Tool</p>
+        <h2>ChatGPT</h2>
+        <p>Kostenlosen Account nutzen. Datei-Upload für CSV/DOCX in der Free-Variante prüfen.</p>
+      </a>
+      <a class="card" href="https://chat.mistral.ai/" target="_blank" rel="noopener">
+        <p class="eyebrow">Tool</p>
+        <h2>Mistral Le Chat</h2>
+        <p>Europäischer Anbieter. Kostenlosen Account nutzen – gut für den Tool-Vergleich.</p>
+      </a>
+      <a class="card" href="https://claude.ai/" target="_blank" rel="noopener">
+        <p class="eyebrow">Tool</p>
+        <h2>Claude</h2>
+        <p>Kostenlosen Account nutzen. Besonders geeignet für HTML-Dashboards mit Vorschau.</p>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Praxis-Werkstatt KI: Analysieren · VHS-Tageskurs für Verwaltungsmitarbeitende · Nur fiktive Übungsdaten</p>
+  </footer>
+</body>
+</html>

@@ -25,6 +25,7 @@ Kursseite (GitHub Pages): <https://rmdroid.github.io/vhs-werkstatt2/>
 | `bausteine/skills/*.zip` | Dieselben drei Bausteine als Skill-ZIP |
 | `bausteine/skills/<name>/SKILL.md` | Entpackte Skills, im Browser lesbar |
 | `screenshots/` | Ältere Stationsbilder, nicht in die Kursseite eingebunden |
+| `screenshots2/` | Frame-Bilder des aktuellen Boards (0–8), nicht in die Kursseite eingebunden |
 
 Die drei Bausteine heißen `auftrag-schaerfen`, `daten-auswerten` und `ki-ergebnis-pruefen`.
 

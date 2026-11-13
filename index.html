@@ -34,6 +34,7 @@
       font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
       font-size: 1.05rem;
       line-height: 1.5;
+      overflow-wrap: break-word;
     }
 
     .wrap {
@@ -41,7 +42,6 @@
       margin-inline: auto;
     }
 
-    /* ---------- Hero ---------- */
     .hero {
       margin-top: 1.25rem;
       padding: 0;
@@ -99,14 +99,28 @@
       letter-spacing: -0.02em;
     }
 
+    h2 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.6vw, 1.45rem);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+
     .lead {
       margin: 0;
-      max-width: 36rem;
+      max-width: 40rem;
       color: #e4f1f0;
       font-size: 1.05rem;
     }
 
-    /* ---------- Main stack ---------- */
     .stack {
       display: grid;
       gap: 1.15rem;
@@ -138,7 +152,41 @@
       color: var(--muted);
     }
 
-    /* ---------- Hint box ---------- */
+    .panel {
+      padding: 1.15rem 1.25rem 1.2rem;
+      border-radius: 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .saetze {
+      margin: 0.35rem 0 0;
+      padding-left: 1.35rem;
+    }
+
+    .saetze li {
+      margin: 0.45rem 0;
+    }
+
+    .leitsatz {
+      margin: 0;
+      padding: 1rem 1.15rem;
+      border-radius: 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--orange);
+      box-shadow: var(--shadow);
+    }
+
+    .leitsatz p {
+      margin: 0;
+      font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--petrol-dark);
+    }
+
     .hint {
       display: flex;
       gap: 0.85rem;
@@ -166,13 +214,12 @@
 
     .hint strong { color: var(--petrol-dark); }
 
-    /* ---------- Timeline ---------- */
     .timeline {
       list-style: none;
       margin: 0;
       padding: 1rem 1.05rem 1.1rem;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
       gap: 0.55rem;
       border-radius: 16px;
       background: var(--paper);
@@ -191,6 +238,21 @@
       min-height: 3.6rem;
     }
 
+    .tl-item a {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      color: inherit;
+      text-decoration: none;
+      min-height: 2.8rem;
+    }
+
+    .tl-item a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
     .tl-item.is-pause {
       border-left-color: var(--orange);
       background: var(--orange-soft);
@@ -206,13 +268,14 @@
     .tl-item.is-pause .tl-time { color: #b86210; }
 
     .tl-label {
-      font-size: 0.86rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--ink);
-      line-height: 1.25;
+      line-height: 1.3;
+      hyphens: manual;
+      overflow-wrap: normal;
     }
 
-    /* ---------- Cards ---------- */
     .split {
       display: grid;
       gap: 0.9rem;
@@ -273,14 +336,6 @@
       display: block;
     }
 
-    .card h2 {
-      margin: 0;
-      font-size: clamp(1.15rem, 2.4vw, 1.35rem);
-      line-height: 1.25;
-      letter-spacing: -0.015em;
-      color: var(--ink);
-    }
-
     .card p.desc {
       margin: 0.1rem 0 0;
       color: var(--muted);
@@ -303,26 +358,25 @@
       transition: transform var(--ease);
     }
 
-    .card:hover {
+    a.card:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-hover);
       border-color: #b8cdc9;
     }
 
-    .card:hover::before {
+    a.card:hover::before {
       background: var(--orange);
     }
 
-    .card:hover .card-action .arrow {
+    a.card:hover .card-action .arrow {
       transform: translateX(4px);
     }
 
-    .card:focus-visible {
+    a.card:focus-visible {
       outline: 3px solid var(--focus);
       outline-offset: 3px;
     }
 
-    /* Primary Miro card – stays strong petrol */
     .card-primary {
       min-height: 10.5rem;
       padding: 1.55rem 1.5rem 1.45rem;
@@ -362,7 +416,7 @@
       transform: translateY(-3px);
       box-shadow: 0 18px 36px rgba(15, 92, 102, 0.28);
       border-color: transparent;
-      background: var(--petrol); /* no hard color flip */
+      background: var(--petrol);
     }
 
     .card-primary:focus-visible {
@@ -370,7 +424,6 @@
       box-shadow: 0 0 0 6px var(--focus), 0 12px 28px rgba(15, 92, 102, 0.18);
     }
 
-    /* Placeholder badge – small, does NOT restyle the whole card */
     .badge-soon {
       display: inline-flex;
       align-items: center;
@@ -392,23 +445,129 @@
       color: #9a5208;
     }
 
-    /* Teams card – paper with dashed border hint */
     .card-soon {
       border-style: dashed;
       border-color: #b8cdc9;
     }
 
-
-    .station-label {
-      margin: 0.35rem 0 -0.25rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #6a8589;
+    .station {
+      scroll-margin-top: 0.8rem;
+      padding: 1.15rem 1.2rem 1.2rem;
+      border-radius: 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
     }
 
-    /* ---------- Footer ---------- */
+    .station.is-pause {
+      background: #fff8f1;
+      border-color: #f0d3b0;
+    }
+
+    .station-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.8rem 1.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.35rem;
+    }
+
+    .when {
+      flex: 0 0 auto;
+      margin: 0;
+      font-weight: 700;
+      color: var(--petrol);
+      background: var(--soft);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.92rem;
+    }
+
+    .station.is-pause .when {
+      color: #9a5208;
+      background: var(--orange-soft);
+    }
+
+    .station ol,
+    .howto ol {
+      margin: 0.45rem 0 0;
+      padding-left: 1.3rem;
+    }
+
+    .station li,
+    .howto li {
+      margin: 0.35rem 0;
+    }
+
+    .station .vertiefung {
+      color: var(--muted);
+    }
+
+    .downloads {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 0.85rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .downloads a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: var(--soft);
+      border: 1px solid #c9dedc;
+      color: var(--petrol-dark);
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+    }
+
+    .downloads a:hover {
+      border-color: var(--petrol);
+      background: #dceceb;
+    }
+
+    .downloads a:focus-visible,
+    .plain-links a:focus-visible,
+    .howto a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .plain-links {
+      margin: 0.7rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .plain-links a,
+    .howto a {
+      color: var(--petrol-dark);
+      font-weight: 700;
+    }
+
+    .howto {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .howto h3 {
+      color: var(--petrol-dark);
+    }
+
+    .note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
     footer {
       width: min(1120px, calc(100% - 2rem));
       margin: 0 auto 1.6rem;
@@ -422,7 +581,6 @@
       font-size: 0.9rem;
     }
 
-    /* ---------- Responsive ---------- */
     @media (min-width: 720px) {
       .hero {
         grid-template-columns: 1.15fr 0.85fr;
@@ -434,13 +592,16 @@
       .hero-copy { padding: 2.2rem 1.9rem 2.1rem; }
       .split-2 { grid-template-columns: 1fr 1fr; }
       .split-3 { grid-template-columns: 1fr 1fr 1fr; }
+      .howto-2 { grid-template-columns: 1fr 1fr; }
       .card { min-height: 100%; }
     }
 
-    @media (min-width: 960px) {
-      .timeline {
-        grid-template-columns: repeat(9, 1fr);
-      }
+    @media (max-width: 719px) {
+      .wrap { width: min(1120px, calc(100% - 1.25rem)); }
+      .hero-copy { padding: 1.35rem 1.15rem 1.25rem; }
+      .station,
+      .panel,
+      .card { padding: 1rem 0.95rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -450,11 +611,11 @@
       .card-action .arrow {
         transition: none;
       }
-      .card:hover,
+      a.card:hover,
       .card-primary:hover {
         transform: none;
       }
-      .card:hover .card-action .arrow {
+      a.card:hover .card-action .arrow {
         transform: none;
       }
     }
@@ -463,9 +624,9 @@
 <body>
   <header class="hero wrap">
     <div class="hero-copy">
-      <p class="eyebrow">VHS-Tageskurs · 9–14 Uhr</p>
+      <p class="eyebrow">VHS-Tageskurs · 9–14 Uhr · Verwaltung</p>
       <h1>Praxis-Werkstatt KI: Analysieren</h1>
-      <p class="lead">Herzlich willkommen. Heute üben Sie die strukturierte Auswertung von Texten und Tabellen mit ChatGPT, Mistral&nbsp;Le&nbsp;Chat und Claude – inklusive Plausibilitätscheck und Entscheidungsvorlage.</p>
+      <p class="lead">Ein Fall durch den ganzen Tag: Musterstadt, Bürgeranliegen 2025. Am Ende liegt eine Entscheidungsvorlage für den Ausschuss. Sie arbeiten mit ChatGPT, Mistral&nbsp;Le&nbsp;Chat und Claude – nur mit kostenlosen Accounts.</p>
     </div>
     <div class="hero-visual">
       <img src="kurs-hero.jpg" width="1280" height="720" alt="Illustration: Tabellen, Diagramme, Lupe und Checkliste – Datenanalyse mit KI">
@@ -473,28 +634,42 @@
   </header>
 
   <main class="stack wrap">
+    <section class="panel" aria-labelledby="saetze-title">
+      <h2 class="section-title" id="saetze-title">Drei Sätze zum Kurs</h2>
+      <ol class="saetze">
+        <li>Heute werten wir einen echten Verwaltungsfall mit KI und nach Dienstanweisung aus.</li>
+        <li>Sie lernen, wo KI stark ist, wo sie rät, und wie Sie sie zum Rechnen bringen, statt ihr zu glauben.</li>
+        <li>Am Nachmittag gehen Sie mit einer Vorlage, einer Prüfliste und drei eigenen Bausteinen nach Hause.</li>
+      </ol>
+    </section>
+
+    <blockquote class="leitsatz">
+      <p>Die KI bekommt die Beschreibung, der Browser bekommt die Daten.</p>
+    </blockquote>
+
     <aside class="hint" role="note">
       <svg class="hint-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
         <path d="M12 8v.01M12 11v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <p><strong>Nur fiktive Daten</strong> – keine personenbezogenen Daten in KI-Tools (KI-Dienstanweisung). Nutzen Sie ausschließlich die Übungsdateien von dieser Seite und kostenlose Accounts.</p>
+      <p><strong>Ampel und Dienstanweisung gelten.</strong> Hochgeladen werden nur anonymisierte beziehungsweise die fiktiven Kursdaten. Alle arbeiten am selben Fall. Wer früher fertig ist, nimmt die Vertiefung.</p>
     </aside>
 
     <div class="section-head">
-      <p class="section-title">Ablauf heute</p>
-      <p class="section-note">8 Stationen · Pause um 11:00</p>
+      <h2 class="section-title">Ablauf heute</h2>
+      <p class="section-note">9:00–14:00 · Pause 11:00–11:15</p>
     </div>
     <ol class="timeline" aria-label="Tagesablauf">
-      <li class="tl-item"><span class="tl-time">9:00</span><span class="tl-label">0 Start</span></li>
-      <li class="tl-item"><span class="tl-time">9:15</span><span class="tl-label">1 Aufwärmen</span></li>
-      <li class="tl-item"><span class="tl-time">9:45</span><span class="tl-label">2 Datenanalyse</span></li>
-      <li class="tl-item"><span class="tl-time">10:30</span><span class="tl-label">3 Dashboard</span></li>
-      <li class="tl-item is-pause"><span class="tl-time">11:00</span><span class="tl-label">Pause</span></li>
-      <li class="tl-item"><span class="tl-time">11:15</span><span class="tl-label">4 Vergleich</span></li>
-      <li class="tl-item"><span class="tl-time">12:00</span><span class="tl-label">5 Plausibilität</span></li>
-      <li class="tl-item"><span class="tl-time">13:00</span><span class="tl-label">6 Vorlage</span></li>
-      <li class="tl-item"><span class="tl-time">13:40</span><span class="tl-label">7 Abschluss</span></li>
+      <li class="tl-item"><a href="#s0"><span class="tl-time">9:00</span><span class="tl-label">Was erwarten Sie heute?</span></a></li>
+      <li class="tl-item"><a href="#s1"><span class="tl-time">9:15</span><span class="tl-label">Auftrag klären</span></a></li>
+      <li class="tl-item"><a href="#s2"><span class="tl-time">9:45</span><span class="tl-label">Darf das in die KI?</span></a></li>
+      <li class="tl-item"><a href="#s3"><span class="tl-time">10:15</span><span class="tl-label">Die KI rechnet</span></a></li>
+      <li class="tl-item is-pause"><a href="#pause"><span class="tl-time">11:00</span><span class="tl-label">Pause</span></a></li>
+      <li class="tl-item"><a href="#s4"><span class="tl-time">11:15</span><span class="tl-label">Muster &amp; Kategorien</span></a></li>
+      <li class="tl-item"><a href="#s5"><span class="tl-time">12:00</span><span class="tl-label">Zwei Stellungnahmen</span></a></li>
+      <li class="tl-item"><a href="#s6"><span class="tl-time">12:45</span><span class="tl-label">Drei Tools, eine Wahrheit?</span></a></li>
+      <li class="tl-item"><a href="#s7"><span class="tl-time">13:15</span><span class="tl-label">Entscheidungsvorlage</span></a></li>
+      <li class="tl-item"><a href="#s8"><span class="tl-time">13:40</span><span class="tl-label">Erwartungen erfüllt?</span></a></li>
     </ol>
 
     <!-- ===== MIRO-LINK: vor Kursbeginn durch echten Board-Link ersetzen ===== -->
@@ -508,7 +683,7 @@
           <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/></svg>
         </span>
       </div>
-      <p class="desc">Gemeinsames Kursboard mit Stationen, Prompt-Bausteinen und Ergebnisflächen – hier arbeiten wir den Tag über.</p>
+      <p class="desc">Gemeinsames Kursboard mit Stationen, Prompts und Ergebnisflächen. Hier arbeiten wir den Tag über.</p>
       <span class="badge-soon">Link folgt</span>
       <span class="card-action">Öffnen <span class="arrow" aria-hidden="true">↗</span></span>
     </a>
@@ -532,110 +707,11 @@
     <!-- ===== ENDE TEAMS-LINK ===== -->
 
     <div class="section-head">
-      <p class="section-title">Übungsdaten</p>
-      <p class="section-note">Reihenfolge nach Stationen</p>
-    </div>
-
-    <p class="station-label">Station 1 · Aufwärmen</p>
-    <!-- Station 1 -->
-    <a class="card" href="daten/aufwaermen_mini.csv" download="aufwaermen_mini.csv">
-      <div class="card-top">
-        <div>
-          <p class="eyebrow">Station 1 · CSV</p>
-          <h2>Aufwärmen – Mini-Tabelle</h2>
-        </div>
-        <span class="card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="18" r="3" stroke="currentColor" stroke-width="2"/></svg>
-        </span>
-      </div>
-      <p class="desc">Kurze Übersicht mit einem versteckten Rechenfehler. Zum Einstieg in den Plausibilitätscheck.</p>
-      <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
-    </a>
-
-    <p class="station-label">Station 2 &amp; 3 · Datenanalyse &amp; Dashboard</p>
-    <!-- Station 2/3 -->
-    <div class="split split-2">
-      <a class="card" href="daten/buergeranliegen.csv" download="buergeranliegen.csv">
-        <div class="card-top">
-          <div>
-            <p class="eyebrow">Station 2 &amp; 3 · CSV</p>
-            <h2>Bürgeranliegen (CSV)</h2>
-          </div>
-          <span class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M9 9v11M15 9v11" stroke="currentColor" stroke-width="2"/></svg>
-          </span>
-        </div>
-        <p class="desc">Fiktive Jahresübersicht Musterstadt 2025 (UTF-8 mit BOM, Semikolon). Für Datenanalyse und Dashboard.</p>
-        <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
-      </a>
-      <a class="card" href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">
-        <div class="card-top">
-          <div>
-            <p class="eyebrow">Station 2 &amp; 3 · XLSX</p>
-            <h2>Bürgeranliegen (Excel)</h2>
-          </div>
-          <span class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M8 13l2.5 3L8 19M13 13h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </div>
-        <p class="desc">Dieselbe Tabelle als Excel-Datei – falls der CSV-Import im Tool hakelt.</p>
-        <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
-      </a>
-    </div>
-
-    <p class="station-label">Station 4 · Vergleichsanalyse</p>
-    <!-- Station 4 -->
-    <div class="split split-2">
-      <a class="card" href="daten/stellungnahme_a.docx" download="stellungnahme_a.docx">
-        <div class="card-top">
-          <div>
-            <p class="eyebrow">Station 4 · DOCX</p>
-            <h2>Stellungnahme A</h2>
-          </div>
-          <span class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="2"/><path d="M14 3v5h5M8 13h8M8 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </span>
-        </div>
-        <p class="desc">Bürgerinitiative „Grünes Zentrum Musterstadt“ – Pro Umwandlung Parkplatz zu Grünfläche.</p>
-        <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
-      </a>
-      <a class="card" href="daten/stellungnahme_b.docx" download="stellungnahme_b.docx">
-        <div class="card-top">
-          <div>
-            <p class="eyebrow">Station 4 · DOCX</p>
-            <h2>Stellungnahme B</h2>
-          </div>
-          <span class="card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="2"/><path d="M14 3v5h5M8 13h8M8 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </span>
-        </div>
-        <p class="desc">Einzelhandelsverband Musterstadt – Contra vollständige Umwandlung, Kompromissvorschlag.</p>
-        <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
-      </a>
-    </div>
-
-    <p class="station-label">Station 5 · Plausibilitätscheck</p>
-    <!-- Station 5 -->
-    <a class="card" href="daten/ki_ergebnis_fehlerbingo.docx" download="ki_ergebnis_fehlerbingo.docx">
-      <div class="card-top">
-        <div>
-          <p class="eyebrow">Station 5 · DOCX</p>
-          <h2>KI-Ergebnis fürs Fehler-Bingo</h2>
-        </div>
-        <span class="card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 11h6M11 8v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-      </div>
-      <p class="desc">Vorbereitetes Analyseergebnis zur Bürgeranliegen-CSV – zum Prüfen mit der Checkliste.</p>
-      <span class="card-action">Herunterladen <span class="arrow" aria-hidden="true">↓</span></span>
-    </a>
-
-    <div class="section-head">
-      <p class="section-title">Werkzeuge</p>
+      <h2 class="section-title">Werkzeuge</h2>
       <p class="section-note">Nur kostenlose Accounts</p>
     </div>
     <div class="split split-3">
-      <a class="card" href="https://chatgpt.com/" target="_blank" rel="noopener">
+      <a class="card" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <div>
             <p class="eyebrow">Tool</p>
@@ -645,10 +721,10 @@
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.2 4.5L19 8.2l-3.5 3.4.8 4.9L12 14.8 7.7 16.5l.8-4.9L5 8.2l4.8-.7L12 3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
           </span>
         </div>
-        <p class="desc">Kostenlosen Account nutzen. Datei-Upload für CSV/DOCX in der Free-Variante prüfen.</p>
+        <p class="desc">Kostenlosen Account nutzen. Datei-Upload für CSV und DOCX in der Free-Variante prüfen.</p>
         <span class="card-action">Öffnen <span class="arrow" aria-hidden="true">↗</span></span>
       </a>
-      <a class="card" href="https://chat.mistral.ai/" target="_blank" rel="noopener">
+      <a class="card" href="https://chat.mistral.ai/" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <div>
             <p class="eyebrow">Tool</p>
@@ -658,10 +734,10 @@
             <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </span>
         </div>
-        <p class="desc">Europäischer Anbieter. Kostenlosen Account nutzen – gut für den Tool-Vergleich.</p>
+        <p class="desc">Europäischer Anbieter. Kostenlosen Account nutzen, gut für den Vergleich der drei Tools.</p>
         <span class="card-action">Öffnen <span class="arrow" aria-hidden="true">↗</span></span>
       </a>
-      <a class="card" href="https://claude.ai/" target="_blank" rel="noopener">
+      <a class="card" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <div>
             <p class="eyebrow">Tool</p>
@@ -671,14 +747,281 @@
             <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </span>
         </div>
-        <p class="desc">Kostenlosen Account nutzen. Besonders geeignet für HTML-Dashboards mit Vorschau.</p>
+        <p class="desc">Kostenlosen Account nutzen. Hier lassen sich bei Bedarf auch die Skill-ZIPs hochladen.</p>
         <span class="card-action">Öffnen <span class="arrow" aria-hidden="true">↗</span></span>
       </a>
     </div>
+
+    <div class="section-head">
+      <h2 class="section-title">Stationen</h2>
+      <p class="section-note">Aufgabe, dann die passenden Dateien</p>
+    </div>
+
+    <article class="station" id="s0">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Start</p>
+          <h2>Was erwarten Sie heute?</h2>
+        </div>
+        <p class="when">9:00–9:15</p>
+      </div>
+      <ol>
+        <li>Öffnen Sie ein Tool: ChatGPT, Mistral Le Chat oder Claude, jeweils mit kostenlosem Account.</li>
+        <li>Haftnotiz 1: „Was erwarten Sie heute?“</li>
+        <li>Haftnotiz 2: „Welche Auswertung würden Sie am Montag gern schneller erledigen?“</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT öffnen</a></li>
+        <li><a href="https://chat.mistral.ai/" target="_blank" rel="noopener noreferrer">Mistral Le Chat öffnen</a></li>
+        <li><a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude öffnen</a></li>
+      </ul>
+    </article>
+
+    <article class="station" id="s1">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Station 1</p>
+          <h2>Auftrag klären: Was will der Amtsleiter eigentlich?</h2>
+        </div>
+        <p class="when">9:15–9:45</p>
+      </div>
+      <ol>
+        <li>Lesen Sie die Mail. Was davon sollte nicht in die KI? Entfernen Sie das vor dem Kopieren.</li>
+        <li>Nutzen Sie den Prompt aus fünf Bausteinen auf dem Board. Die KI erstellt ein Auftragsblatt: Ziel, Adressat, Frist, Kernfrage, Datenbasis, Nicht-Ziele, Rückfragen.</li>
+        <li>Einigen Sie sich mit der Nachbarin oder dem Nachbarn auf eine Kernfrage in einem Satz und kleben Sie sie auf.</li>
+        <li class="vertiefung">Vertiefung: Lassen Sie prüfen, ob die Kernfrage mit der Tabelle beantwortbar ist, und drei Rückfragen als kurze Mail formulieren.</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="daten/amtsleiter-mail.txt" download="amtsleiter-mail.txt">Mail des Amtsleiters (.txt)</a></li>
+      </ul>
+    </article>
+
+    <article class="station" id="s2">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Station 2</p>
+          <h2>Darf das in die KI? Die Ampel</h2>
+        </div>
+        <p class="when">9:45–10:15</p>
+      </div>
+      <ol>
+        <li>Ziehen Sie die sieben grauen Beispiel-Zettel auf Grün, Gelb oder Rot.</li>
+        <li>Öffnen Sie die Tabelle Bürgeranliegen nur zum Ansehen: Welche Spalte wäre bei echten Daten heikel, und was würden Sie damit tun?</li>
+        <li>Kleben Sie die Antwort als Haftnotiz zu Gelb oder Rot.</li>
+        <li class="vertiefung">Vertiefung: Beschreiben Sie die Tabelle nur (Spalten, Typ, Wertebereich) und lassen Sie daraus eine Pivot-Anleitung und Excel-Formeln bauen.</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="daten/buergeranliegen.csv" download="buergeranliegen.csv">Bürgeranliegen (.csv)</a></li>
+        <li><a href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">Bürgeranliegen (.xlsx)</a></li>
+      </ul>
+    </article>
+
+    <article class="station" id="s3">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Station 3</p>
+          <h2>Die KI rechnet – kann sie das?</h2>
+        </div>
+        <p class="when">10:15–11:00</p>
+      </div>
+      <ol>
+        <li>Laden Sie die Mini-Tabelle hoch und fragen Sie: „Wie viele Anliegen sind es im ersten Quartal insgesamt?“</li>
+        <li>Laden Sie die Bürgeranliegen hoch und fragen Sie zweimal nach den Anliegen je Kategorie im 1. und 2. Halbjahr. A) „Antworten Sie direkt, ohne zu rechnen.“ B) mit dem Prompt vom Board (Code-Ausführung, Rechenweg, Summenprüfung).</li>
+        <li>Tragen Sie beide Ergebnisse in die Ergebnisfläche ein.</li>
+        <li class="vertiefung">Vertiefung: Excel-Datei statt CSV hochladen – kommt dasselbe heraus? Oder mit dem Dashboard-Prompt ein lokales HTML-Werkzeug bauen lassen und die CSV im Browser laden.</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="daten/aufwaermen_mini.csv" download="aufwaermen_mini.csv">Mini-Tabelle (.csv)</a></li>
+        <li><a href="daten/buergeranliegen.csv" download="buergeranliegen.csv">Bürgeranliegen (.csv)</a></li>
+        <li><a href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">Bürgeranliegen (.xlsx)</a></li>
+        <li><a href="werkzeug/dashboard-prompt.txt" download="dashboard-prompt.txt">Dashboard-Prompt (.txt)</a></li>
+        <li><a href="werkzeug/testdaten.csv" download="testdaten.csv">Testdaten (.csv)</a></li>
+        <li><a href="werkzeug/buergeranliegen-dashboard.html">Dashboard im Browser öffnen</a></li>
+      </ul>
+    </article>
+
+    <article class="station is-pause" id="pause">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Pause</p>
+          <h2>Pause</h2>
+        </div>
+        <p class="when">11:00–11:15</p>
+      </div>
+      <p>Kurz durchatmen. Wer mag, schaut sich die Ergebnisfläche von Station 3 an: Wo lagen Variante A und B auseinander?</p>
+    </article>
+
+    <article class="station" id="s4">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Station 4</p>
+          <h2>Muster &amp; Kategorien: Was steckt hinter dem Anstieg?</h2>
+        </div>
+        <p class="when">11:15–12:00</p>
+      </div>
+      <ol>
+        <li>Lassen Sie 3 bis 5 Muster finden, jedes mit Beleg. Nutzen Sie den Prompt vom Board und setzen Sie die Kernfrage aus Station 1 ein.</li>
+        <li>Fragen Sie bei einem Muster nach: „Zeigen Sie mir die Zeilen, die das belegen.“</li>
+        <li>Fragen Sie: „Warum sind die Anliegen gestiegen?“ Einmal so, einmal mit dem Zusatz: „Wenn die Daten das nicht zeigen, sagen Sie: Weiß ich nicht.“</li>
+        <li class="vertiefung">Vertiefung: Lassen Sie die Kurzbeschreibungen der Grünflächen-Anliegen in Unterkategorien ordnen und die Summe prüfen. Zum stärksten Muster fragen Sie: „Was in den Daten würde dieses Muster kippen?“</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="daten/buergeranliegen.csv" download="buergeranliegen.csv">Bürgeranliegen (.csv)</a></li>
+        <li><a href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">Bürgeranliegen (.xlsx)</a></li>
+      </ul>
+    </article>
+
+    <article class="station" id="s5">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Station 5</p>
+          <h2>Zwei Stellungnahmen: Pro und Contra mit Fundstellen</h2>
+        </div>
+        <p class="when">12:00–12:45</p>
+      </div>
+      <ol>
+        <li>Lassen Sie beide Stellungnahmen gegenüberstellen (Prompt vom Board): nummerierte Kernaussagen [A1], [B1] mit Fundstelle, Gemeinsamkeiten, Unterschiede, Pro/Contra-Matrix.</li>
+        <li>Prüfen Sie zwei Fundstellen im Original: Steht das wirklich so da?</li>
+        <li>Übertragen Sie zwei Streitpunkte in die Matrix auf dem Board.</li>
+        <li class="vertiefung">Vertiefung: Neuer Chat, Stellungnahme B zuerst. Ändert sich die Gewichtung? Markieren Sie jede Zahl, die nur auf Selbstauskunft oder einer kleinen Befragung beruht.</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="daten/stellungnahme_a.docx" download="stellungnahme_a.docx">Stellungnahme A (.docx)</a></li>
+        <li><a href="daten/stellungnahme_a.md">Stellungnahme A (.md)</a></li>
+        <li><a href="daten/stellungnahme_b.docx" download="stellungnahme_b.docx">Stellungnahme B (.docx)</a></li>
+        <li><a href="daten/stellungnahme_b.md">Stellungnahme B (.md)</a></li>
+      </ul>
+    </article>
+
+    <article class="station" id="s6">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Station 6</p>
+          <h2>Drei Tools, eine Wahrheit?</h2>
+        </div>
+        <p class="when">12:45–13:15</p>
+      </div>
+      <ol>
+        <li>Stellen Sie die fünf Fragen vom Board an ein zweites, gern auch an ein drittes Tool.</li>
+        <li>Tragen Sie die Zahlen in die Vergleichstabelle ein.</li>
+        <li>Suchen Sie eine Abweichung aus und zählen Sie in Excel selbst nach (Filter).</li>
+        <li>Speichern Sie Prompt und Antwort, zum Beispiel in einer Word-Datei.</li>
+        <li class="vertiefung">Vertiefung: Prüfen Sie das Muster-Ergebnis aus Station 4 in einem neuen Chat mit der Projektanweisung „KI-Ergebnis prüfen“.</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="daten/buergeranliegen.csv" download="buergeranliegen.csv">Bürgeranliegen (.csv)</a></li>
+        <li><a href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">Bürgeranliegen (.xlsx)</a></li>
+        <li><a href="bausteine/projektanweisungen/ki-ergebnis-pruefen.txt" download="ki-ergebnis-pruefen.txt">Projektanweisung KI-Ergebnis prüfen (.txt)</a></li>
+      </ul>
+    </article>
+
+    <article class="station" id="s7">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Station 7</p>
+          <h2>Die Entscheidungsvorlage für Montag</h2>
+        </div>
+        <p class="when">13:15–13:40</p>
+      </div>
+      <ol>
+        <li>Lassen Sie eine einseitige Vorlage schreiben (Prompt vom Board, eigene Ergebnisse einfügen).</li>
+        <li>Markieren Sie jede Zahl, die Sie heute selbst nachgeprüft haben.</li>
+        <li>Streichen Sie, was Sie dem Ausschuss nicht erklären könnten.</li>
+        <li>Legen Sie einen Screenshot in die Ergebnisfläche.</li>
+        <li class="vertiefung">Vertiefung: Lassen Sie die Vorlage in einem anderen Tool mit „KI-Ergebnis prüfen“ prüfen, im Modus ohne Daten. Welche Aussage hält nicht?</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="bausteine/projektanweisungen/ki-ergebnis-pruefen.txt" download="ki-ergebnis-pruefen.txt">Projektanweisung KI-Ergebnis prüfen (.txt)</a></li>
+      </ul>
+    </article>
+
+    <article class="station" id="s8">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Abschluss</p>
+          <h2>Wurden Ihre Erwartungen heute erfüllt?</h2>
+        </div>
+        <p class="when">13:40–14:00</p>
+      </div>
+      <ol>
+        <li>Gehen Sie zu Ihrer Haftnotiz vom Start und kleben Sie daneben: erfüllt, teilweise oder nicht.</li>
+        <li>Notieren Sie in der Ergebnisfläche: Was nutzen Sie am Montag als Erstes?</li>
+        <li>Sehen Sie sich die drei Bausteine an: die Projektanweisungen zum Kopieren und die Skill-Dateien als ZIP.</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="#bausteine">Zu den drei Bausteinen</a></li>
+      </ul>
+    </article>
+
+    <section id="bausteine" aria-labelledby="bausteine-title">
+      <div class="section-head">
+        <h2 class="section-title" id="bausteine-title">Ihre drei Bausteine zum Mitnehmen</h2>
+        <p class="section-note">Projektanweisung und Skill</p>
+      </div>
+      <p class="note">Jeder Baustein liegt zweimal vor: als Projektanweisung (.txt, zum Kopieren in ein Projekt) und als Skill (ZIP, zum Beispiel für Claude). Die Dateien enthalten keine Kursdaten.</p>
+      <div class="split split-3" style="margin-top: 0.85rem;">
+        <article class="card">
+          <p class="eyebrow">Baustein 1</p>
+          <h3>Auftrag schärfen</h3>
+          <p class="desc">Aus einer unklaren Mail oder Bitte wird ein prüfbares Auftragsblatt, bevor irgendetwas ausgewertet wird.</p>
+          <ul class="plain-links">
+            <li><a href="bausteine/projektanweisungen/auftrag-schaerfen.txt" download="auftrag-schaerfen.txt">Projektanweisung (.txt)</a></li>
+            <li><a href="bausteine/skills/auftrag-schaerfen.zip" download="auftrag-schaerfen.zip">Skill (ZIP)</a></li>
+            <li><a href="bausteine/skills/auftrag-schaerfen/SKILL.md">SKILL.md im Browser lesen</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Baustein 2</p>
+          <h3>Daten auswerten</h3>
+          <p class="desc">Tabellen und Texte so auswerten, dass jede Aussage einen Beleg hat – oder ohne Upload nur aus der Beschreibung Pivot, Formeln und ein lokales HTML-Werkzeug bauen.</p>
+          <ul class="plain-links">
+            <li><a href="bausteine/projektanweisungen/daten-auswerten.txt" download="daten-auswerten.txt">Projektanweisung (.txt)</a></li>
+            <li><a href="bausteine/skills/daten-auswerten.zip" download="daten-auswerten.zip">Skill (ZIP)</a></li>
+            <li><a href="bausteine/skills/daten-auswerten/SKILL.md">SKILL.md im Browser lesen</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Baustein 3</p>
+          <h3>KI-Ergebnis prüfen</h3>
+          <p class="desc">Ein Ergebnis mit fünf Prüffragen gegen die Daten oder ohne Daten prüfen und Abweichungen zwischen mehreren Tools sichtbar machen.</p>
+          <ul class="plain-links">
+            <li><a href="bausteine/projektanweisungen/ki-ergebnis-pruefen.txt" download="ki-ergebnis-pruefen.txt">Projektanweisung (.txt)</a></li>
+            <li><a href="bausteine/skills/ki-ergebnis-pruefen.zip" download="ki-ergebnis-pruefen.zip">Skill (ZIP)</a></li>
+            <li><a href="bausteine/skills/ki-ergebnis-pruefen/SKILL.md">SKILL.md im Browser lesen</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="anleitung-title">
+      <div class="section-head">
+        <h2 class="section-title" id="anleitung-title">So setzen Sie die Bausteine ein</h2>
+      </div>
+      <div class="howto howto-2">
+        <article class="panel">
+          <h3>Projektanweisung in ein Projekt einfügen</h3>
+          <ol>
+            <li>Laden Sie die Textdatei herunter und öffnen Sie sie.</li>
+            <li>Kopieren Sie den gesamten Text in das Anweisungsfeld eines Projekts: bei ChatGPT ein Projekt anlegen, bei Claude ein Projekt, bei Le Chat einen Agenten oder eine Bibliothek – sofern Ihr kostenloser Account das anbietet.</li>
+            <li>Gibt es kein solches Feld, fügen Sie den Text als erste Nachricht in einen neuen Chat ein.</li>
+          </ol>
+        </article>
+        <article class="panel">
+          <h3>Skill-ZIP in Claude hochladen</h3>
+          <p class="note">Falls im kostenlosen Account verfügbar.</p>
+          <ol>
+            <li>Laden Sie die ZIP-Datei herunter und lassen Sie sie gepackt.</li>
+            <li>Laden Sie sie in Claude bei den Skills beziehungsweise Fähigkeiten hoch, wenn diese Möglichkeit in Ihrem Account angezeigt wird.</li>
+            <li>Fehlt der Upload, nutzen Sie die Projektanweisung als Text. Die SKILL.md können Sie hier im Browser nachlesen.</li>
+          </ol>
+        </article>
+      </div>
+      <p class="note" style="margin-top: 0.85rem;">Hochgeladen werden nur anonymisierte beziehungsweise die fiktiven Kursdaten. Die Ampel und Ihre Dienstanweisung gelten auch mit den Bausteinen.</p>
+    </section>
   </main>
 
   <footer>
-    <p>Praxis-Werkstatt KI: Analysieren · VHS-Tageskurs für Verwaltungsmitarbeitende · Nur fiktive Übungsdaten</p>
+    <p>Praxis-Werkstatt KI: Analysieren · VHS-Tageskurs für die Verwaltung · Fall Musterstadt, nur fiktive Übungsdaten · 9–14 Uhr</p>
   </footer>
 </body>
 </html>

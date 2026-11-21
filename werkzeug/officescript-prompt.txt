@@ -1,0 +1,39 @@
+Du bist Experte für Excel-Datenanalyse und Automatisierung.
+
+Ich habe eine CSV-Datei bereits in Excel importiert bzw. die Kursdatei geöffnet. Die Daten befinden sich im Arbeitsblatt „Bürgeranliegen“ (so heißt das Blatt in der Übungsdatei buergeranliegen.xlsx). Falls Ihr Blatt anders heißt, passen Sie den Namen im Skript an.
+
+Die Datenstruktur lautet (exakte Spaltennamen der Kurs-CSV, Trennzeichen Semikolon):
+
+- ID: Text, Format BA-2025-0001
+- Eingangsdatum: Text im Format YYYY-MM-DD (in Excel oft als Text, nicht als Datum)
+- Monat: Ganze Zahl 1–12 (für die monatliche Entwicklung und Halbjahre diese Spalte nutzen)
+- Stadtteil: Text, genau einer von: Altstadt, Industriegebiet, Nordstadt, Ostviertel, Südstadt, Westend
+- Kanal: Text, genau einer von: E-Mail, Online-Formular, Persönlich, Telefon
+- Kategorie: Text, genau einer von: Beleuchtung, Grünflächen, Lärm, Müll & Sauberkeit, Parken, Sonstiges, Straße & Verkehr
+- Dringlichkeit: Text, genau einer von: hoch, mittel, niedrig
+- Bearbeitungsdauer_Tage: Ganze Zahl in Tagen (in den Übungsdaten 1–46)
+- Status: Text, genau einer von: erledigt, in Bearbeitung, offen
+- Kurzbeschreibung: Freitext (nicht für Kennzahlen verwenden)
+
+Erstelle ein Office Script, das aus diesen Daten automatisch ein professionelles Excel-Dashboard erstellt.
+
+Das Dashboard soll enthalten:
+
+1. Gesamtzahl aller Anliegen.
+2. Anzahl der Anliegen nach Kategorie.
+3. Durchschnittliche Bearbeitungsdauer (Spalte Bearbeitungsdauer_Tage).
+4. Anzahl offener, in Bearbeitung befindlicher und erledigter Anliegen.
+5. Verteilung nach Stadtteilen.
+6. Monatliche Entwicklung (über die Spalte Monat).
+7. Passende Excel-Diagramme.
+8. Übersichtliche Formatierungen und Überschriften.
+
+Verwende nach Möglichkeit native Excel-Formeln und Diagramme, damit die Auswertungen in Excel nachvollziehbar und weiterbearbeitbar bleiben.
+
+Das Skript darf die Originaldaten nicht verändern. Erstelle separate Auswertungsblätter.
+
+Prüfe die Datenstruktur und berücksichtige fehlende oder ungültige Werte.
+
+Gib mir das vollständige Office Script und eine kurze Anleitung zur Ausführung in Excel (Excel im Web / Microsoft 365).
+
+Ich stelle dir keine Originaldaten zur Verfügung. Arbeite ausschließlich mit der beschriebenen Datenstruktur.

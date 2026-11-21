@@ -13,7 +13,7 @@ Kursseite (GitHub Pages): <https://rmdroid.github.io/vhs-werkstatt2/>
 | `index.html` | Kursseite mit Ablauf, Aufgaben und Downloads |
 | `kurs-hero.jpg` | Hero-Bild auf der Kursseite |
 | `daten/buergeranliegen.csv`, `.xlsx` | Fiktive Bürgeranliegen Musterstadt 2025 |
-| `daten/aufwaermen_mini.csv` | Mini-Tabelle für Station 3 |
+| `daten/aufwaermen_mini.csv` | Mini-Tabelle für Station 4 |
 | `daten/amtsleiter-mail.txt` | Fiktive Mail für Station 1 |
 | `daten/stellungnahme_a.docx`, `.md` | Stellungnahme A (Bürgerinitiative) |
 | `daten/stellungnahme_b.docx`, `.md` | Stellungnahme B (Einzelhandelsverband) |
@@ -21,13 +21,14 @@ Kursseite (GitHub Pages): <https://rmdroid.github.io/vhs-werkstatt2/>
 | `werkzeug/dashboard-prompt.txt` | Prompt für ein lokales HTML-Dashboard |
 | `werkzeug/testdaten.csv` | Kleine Testdatei zum Dashboard |
 | `werkzeug/buergeranliegen-dashboard.html` | Fertiges lokales Dashboard (Plan B) |
-| `bausteine/projektanweisungen/*.txt` | Drei Projektanweisungen zum Kopieren |
-| `bausteine/skills/*.zip` | Dieselben drei Bausteine als Skill-ZIP |
-| `bausteine/skills/<name>/SKILL.md` | Entpackte Skills, im Browser lesbar |
+| `bausteine/projektanweisungen/ki-analysieren.txt` | Kurze Projektanweisung (Auswahl und Kurzregeln) |
+| `bausteine/projektanweisungen/ki-analysieren.md` | Ausführliche Anweisung für die Projektanlage |
+| `bausteine/skills/ki-analysieren.zip` | Derselbe Baustein als Skill-ZIP |
+| `bausteine/skills/ki-analysieren/SKILL.md` | Entpackter Skill, im Browser lesbar |
 | `screenshots/` | Ältere Stationsbilder, nicht in die Kursseite eingebunden |
-| `screenshots2/` | Frame-Bilder des aktuellen Boards (0–8), nicht in die Kursseite eingebunden |
+| `screenshots2/` | Frame-Bilder eines früheren Boardstands, nicht in die Kursseite eingebunden |
 
-Die drei Bausteine heißen `auftrag-schaerfen`, `daten-auswerten` und `ki-ergebnis-pruefen`.
+Der aktuelle Baustein heißt `ki-analysieren` (ein Skill, eine kurze TXT, eine ausführliche MD). Beim Start wird gewählt: Auftrag schärfen, Daten auswerten, KI-Ergebnis prüfen oder Werkzeug bauen. Die älteren Einzel-Bausteine bleiben im Ordner, sind auf der Kursseite aber nicht mehr verlinkt.
 
 ## Hinweise
 

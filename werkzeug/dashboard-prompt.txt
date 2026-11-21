@@ -1,8 +1,8 @@
 ROLLE
-Du bist Front-End-Entwickler für Verwaltungsanalysen. Du baust Werkzeuge, die ohne Installation, ohne Server und ohne Cloud-Upload auf einem gesperrten Behördenrechner im Browser laufen.
+Sie sind Front-End-Entwicklerin bzw. Front-End-Entwickler für Verwaltungsanalysen. Sie bauen Werkzeuge, die ohne Installation, ohne Server und ohne Cloud-Upload auf einem gesperrten Behördenrechner im Browser laufen.
 
 KONTEXT
-Ich arbeite in der öffentlichen Verwaltung. Echte Bürgerdaten darf ich keiner KI geben. Ich beschreibe dir nur das Schema meiner CSV. Du baust daraus eine einzelne HTML-Datei, die ich lokal öffne und mit meinen echten Daten fülle. Die Datei wird auf Windows mit stark eingeschränkten Rechten genutzt: kein Python, kein Node, oft blockierte CDNs/Proxys.
+Ich arbeite in der öffentlichen Verwaltung. Echte Bürgerdaten darf ich keiner KI geben. Ich beschreibe Ihnen nur das Schema meiner CSV. Sie bauen daraus eine einzelne HTML-Datei, die ich lokal öffne und mit meinen Daten fülle. Die Datei wird typischerweise auf Windows mit eingeschränkten Rechten genutzt: kein Python, kein Node, oft blockierte CDNs.
 
 Schema der CSV (Spaltentrenner meist Semikolon; UTF-8, ggf. mit BOM; 1 Kopfzeile):
 - ID – Text, Format BA-2025-0001
@@ -17,14 +17,14 @@ Schema der CSV (Spaltentrenner meist Semikolon; UTF-8, ggf. mit BOM; 1 Kopfzeile
 - Kurzbeschreibung – Freitext
 
 AUFGABE
-1. Liefere zuerst 30 fiktive Testzeilen als CSV (Semikolon, UTF-8, Kopfzeile wie oben). Werte müssen zum Schema passen, aber frei erfunden sein. Keine echten Behördendaten.
-2. Liefere danach genau EINE vollständige HTML-Datei „buergeranliegen-dashboard.html“, die lokal per Doppelklick öffnet.
+1. Liefern Sie zuerst 30 fiktive Testzeilen als CSV (Semikolon, UTF-8, Kopfzeile wie oben). Werte müssen zum Schema passen, aber frei erfunden sein. Keine echten Behördendaten.
+2. Liefern Sie danach genau EINE vollständige HTML-Datei „buergeranliegen-dashboard.html“, die lokal per Doppelklick öffnet.
 
 Das HTML-Werkzeug muss können:
-- CSV laden per Dateiauswahl UND Drag & Drop (FileReader; nichts hochladen)
+- CSV laden per Dateiauswahl UND Drag & Drop (File API / FileReader; nichts hochladen, nichts nach außen senden)
 - CSV robust parsen: Auto-Erkennung Semikolon/Komma, BOM entfernen, Anführungszeichen beachten
 - Kennzahlen-Kacheln (immer auf gefilterte Daten): Anzahl Anliegen, Ø Bearbeitungsdauer (1 Nachkommastelle), Anteil Status „offen“ in %, Anzahl „offen + hoch“
-- Diagramme ohne externe Bibliotheken (kein CDN, kein Chart.js, kein Google Fonts) – nur Vanilla JS + SVG oder Canvas:
+- Diagramme ohne externe Bibliotheken – nur Inline-JavaScript und selbst gezeichnetes SVG oder Canvas:
   a) Anliegen je Kategorie (Balken)
   b) Verlauf je Monat (Linie oder Balken)
   c) Kanal-Entwicklung: Online-Formular 1. vs. 2. Halbjahr (Monate 1–6 vs. 7–12) und optional alle Kanäle je Monat
@@ -38,20 +38,28 @@ Das HTML-Werkzeug muss können:
   • Online-Formular: wenn 2. Halbjahr ≥ 1,5 × 1. Halbjahr → „starker Anstieg Online“
 - Plausibilitätsprüfung beim Laden, sichtbar: Zeilenzahl, leere Pflichtfelder, ungültige Datumsformate, unbekannte Stadtteil/Kanal/Kategorie/Status/Dringlichkeit, Bearbeitungsdauer außerhalb 1–46
 - Tabelle der (gefilterten) Datensätze
-- Export der gefilterten Tabelle als CSV (Semikolon, UTF-8-BOM)
+- Export der gefilterten Tabelle nur als CSV (Semikolon, UTF-8-BOM). Kein xlsx, keine Export-Bibliothek.
 - Druckansicht (CSS @media print)
 - Dauerhafter Hinweis: „Daten bleiben lokal – nichts wird hochgeladen.“
 
-FORMAT
-Antwort in genau zwei Teilen:
-A) Codeblock „testdaten.csv“ mit den 30 fiktiven Zeilen
-B) Codeblock „buergeranliegen-dashboard.html“ mit der kompletten Datei (DOCTYPE, Head, Body, Inline-CSS, Inline-JS – alles in einer Datei)
-Gestaltung: modern, klar, responsiv; Farben Petrol (#0F6E6E) und Orange (#E67E22); deutsche Beschriftungen; Schrift system-ui.
+SICHERHEITSREGELN (zwingend, keine Ausnahme)
+- Genau eine Datei: DOCTYPE, Head, Body, CSS und JavaScript vollständig inline. Kein zweites File.
+- Kein externes JavaScript, kein CDN, keine Webfonts, keine externen Bilder, keine externen CSS-Dateien.
+- Kein fetch, kein XMLHttpRequest, kein WebSocket, kein navigator.sendBeacon, kein dynamisch erzeugtes Script oder Iframe mit fremder Quelle, keine andere Netzwerkanfrage.
+- Keine Übertragung der CSV-Daten an Server oder APIs.
+- Kein localStorage, kein sessionStorage, kein IndexedDB, keine Cookies, kein Cache ohne ausdrückliche Nutzeraktion (Speichern oder Export nur nach Klick).
+- Verarbeitung nur im Arbeitsspeicher des Browsers. Laden ausschließlich über die File API.
+- Wenn Monat und Eingangsdatum widersprechen, für Filter und Halbjahre die Spalte Monat nutzen.
 
-PRÜFAUFTRAG / GRENZEN
-- Keine externen Ressourcen (kein CDN, kein Font, kein Analytics).
+FORMAT
+Antwort in genau drei Teilen:
+A) Codeblock „testdaten.csv“ mit den 30 fiktiven Zeilen
+B) Codeblock „buergeranliegen-dashboard.html“ mit der kompletten Datei
+C) Sicherheits-Checkliste: jede der Sicherheitsregeln oben mit „erfüllt“ oder „nicht erfüllt“ und einem kurzen Beleg (zum Beispiel „kein fetch im Code“, „keine src-Attribute auf script“). Wenn eine Regel nicht erfüllt ist, korrigieren Sie die Datei, bevor Sie sie ausgeben.
+Gestaltung: modern, klar, responsiv; Farben Petrol (#0F6E6E) und Orange (#E67E22); deutsche Beschriftungen; Schrift system-ui, keine Webfonts.
+
+PRÜFAUFTRAG
 - Keine echten Datenwerte erfinden oder „raten“ – nur Schema und die 30 Testzeilen.
-- Keine Netzwerkanfragen im HTML.
-- Parser und Filter müssen mit Semikolon-CSV und Text-Daten YYYY-MM-DD funktionieren (Eingangsdatum oft als Text, nicht als Excel-Datum).
-- Wenn Monat und Eingangsdatum widersprechen, Monat-Spalte für Filter/Halbjahre priorisieren.
-- Am Ende kurz (3–5 Stichpunkte): Wie teste ich das Werkzeug lokal mit den Testdaten und später mit Echtdaten.
+- Parser und Filter müssen mit Semikolon-CSV und Textdatum YYYY-MM-DD funktionieren.
+- Am Ende in 3–5 Stichpunkten: Wie teste ich das Werkzeug lokal mit den Testdaten und später mit eigenen Daten.
+- Weisen Sie mich ausdrücklich an, den erzeugten Code zu prüfen, bevor echte Daten hineingeladen werden: im Quelltext nach „http“, „fetch“ und „<script src“ suchen. Lokale Ausführung allein ist keine Sicherheitsgarantie.

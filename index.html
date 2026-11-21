@@ -639,7 +639,7 @@
       <ol class="saetze">
         <li>Heute werten wir einen echten Verwaltungsfall mit KI und nach Dienstanweisung aus.</li>
         <li>Sie lernen, wo KI stark ist, wo sie rät, und wie Sie sie zum Rechnen bringen, statt ihr zu glauben.</li>
-        <li>Am Nachmittag gehen Sie mit einer Vorlage, einer Prüfliste und drei eigenen Bausteinen nach Hause.</li>
+        <li>Am Nachmittag gehen Sie mit einer Vorlage, einer Prüfliste und einem eigenen Analyse-Baustein nach Hause.</li>
       </ol>
     </section>
 
@@ -663,13 +663,14 @@
       <li class="tl-item"><a href="#s0"><span class="tl-time">9:00</span><span class="tl-label">Was erwarten Sie heute?</span></a></li>
       <li class="tl-item"><a href="#s1"><span class="tl-time">9:15</span><span class="tl-label">Auftrag klären</span></a></li>
       <li class="tl-item"><a href="#s2"><span class="tl-time">9:45</span><span class="tl-label">Darf das in die KI?</span></a></li>
-      <li class="tl-item"><a href="#s3"><span class="tl-time">10:15</span><span class="tl-label">Die KI rechnet</span></a></li>
+      <li class="tl-item"><a href="#s3"><span class="tl-time">10:10</span><span class="tl-label">Die KI baut das Werkzeug</span></a></li>
+      <li class="tl-item"><a href="#s4"><span class="tl-time">10:30</span><span class="tl-label">Die KI rechnet</span></a></li>
       <li class="tl-item is-pause"><a href="#pause"><span class="tl-time">11:00</span><span class="tl-label">Pause</span></a></li>
-      <li class="tl-item"><a href="#s4"><span class="tl-time">11:15</span><span class="tl-label">Muster &amp; Kategorien</span></a></li>
-      <li class="tl-item"><a href="#s5"><span class="tl-time">12:00</span><span class="tl-label">Zwei Stellungnahmen</span></a></li>
-      <li class="tl-item"><a href="#s6"><span class="tl-time">12:45</span><span class="tl-label">Drei Tools, eine Wahrheit?</span></a></li>
-      <li class="tl-item"><a href="#s7"><span class="tl-time">13:15</span><span class="tl-label">Entscheidungsvorlage</span></a></li>
-      <li class="tl-item"><a href="#s8"><span class="tl-time">13:40</span><span class="tl-label">Erwartungen erfüllt?</span></a></li>
+      <li class="tl-item"><a href="#s5"><span class="tl-time">11:15</span><span class="tl-label">Muster &amp; Kategorien</span></a></li>
+      <li class="tl-item"><a href="#s6"><span class="tl-time">12:00</span><span class="tl-label">Zwei Stellungnahmen</span></a></li>
+      <li class="tl-item"><a href="#s7"><span class="tl-time">12:45</span><span class="tl-label">Drei Tools, eine Wahrheit?</span></a></li>
+      <li class="tl-item"><a href="#s8"><span class="tl-time">13:15</span><span class="tl-label">Entscheidungsvorlage</span></a></li>
+      <li class="tl-item"><a href="#s9"><span class="tl-time">13:40</span><span class="tl-label">Erwartungen erfüllt?</span></a></li>
     </ol>
 
     <!-- ===== MIRO-LINK: vor Kursbeginn durch echten Board-Link ersetzen ===== -->
@@ -802,13 +803,12 @@
           <p class="eyebrow">Station 2</p>
           <h2>Darf das in die KI? Die Ampel</h2>
         </div>
-        <p class="when">9:45–10:15</p>
+        <p class="when">9:45–10:10</p>
       </div>
       <ol>
-        <li>Ziehen Sie die sieben grauen Beispiel-Zettel auf Grün, Gelb oder Rot.</li>
+        <li>Ziehen Sie die Beispiele auf Grün, Gelb oder Rot. Bearbeiten Sie die sieben bekannten und mindestens drei neue.</li>
         <li>Öffnen Sie die Tabelle Bürgeranliegen nur zum Ansehen: Welche Spalte wäre bei echten Daten heikel, und was würden Sie damit tun?</li>
         <li>Kleben Sie die Antwort als Haftnotiz zu Gelb oder Rot.</li>
-        <li class="vertiefung">Vertiefung: Beschreiben Sie die Tabelle nur (Spalten, Typ, Wertebereich) und lassen Sie daraus eine Pivot-Anleitung und Excel-Formeln bauen.</li>
       </ol>
       <ul class="downloads">
         <li><a href="daten/buergeranliegen.csv" download="buergeranliegen.csv">Bürgeranliegen (.csv)</a></li>
@@ -816,27 +816,49 @@
       </ul>
     </article>
 
+
     <article class="station" id="s3">
       <div class="station-head">
         <div>
           <p class="eyebrow">Station 3</p>
+          <h2>Die KI baut das Werkzeug</h2>
+        </div>
+        <p class="when">10:10–10:30</p>
+      </div>
+      <ol>
+        <li>Wählen Sie einen Weg: HTML-Datei oder Excel-Formeln und Pivot. Office Scripts oder Python in Excel nur, falls Ihre Behörde sie freigegeben hat. Python rechnet in der Microsoft-Cloud.</li>
+        <li>Beschreiben Sie die Tabelle nur mit Spalten, Typ und Wertebereich. Kopieren Sie den Prompt vom Board oder den Dashboard-Prompt.</li>
+        <li>HTML: Datei lokal öffnen, Übungs-CSV über die Dateiauswahl laden. Vorher im Code nach „http“, „fetch“ und „script src“ suchen.</li>
+        <li>Formeln: in der Übungsdatei per Filter nachrechnen.</li>
+        <li class="vertiefung">Vertiefung: Dieselbe HTML-Datei mit einer zweiten CSV gleicher Spalten testen.</li>
+      </ol>
+      <ul class="downloads">
+        <li><a href="daten/buergeranliegen.csv" download="buergeranliegen.csv">Bürgeranliegen (.csv)</a></li>
+        <li><a href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">Bürgeranliegen (.xlsx)</a></li>
+        <li><a href="werkzeug/dashboard-prompt.txt" download="dashboard-prompt.txt">Dashboard-Prompt (.txt)</a></li>
+        <li><a href="werkzeug/testdaten.csv" download="testdaten.csv">Testdaten (.csv)</a></li>
+        <li><a href="werkzeug/buergeranliegen-dashboard.html">Fertiges Dashboard im Browser öffnen (Plan B)</a></li>
+      </ul>
+    </article>
+
+    <article class="station" id="s4">
+      <div class="station-head">
+        <div>
+          <p class="eyebrow">Station 4</p>
           <h2>Die KI rechnet – kann sie das?</h2>
         </div>
-        <p class="when">10:15–11:00</p>
+        <p class="when">10:30–11:00</p>
       </div>
       <ol>
         <li>Laden Sie die Mini-Tabelle hoch und fragen Sie: „Wie viele Anliegen sind es im ersten Quartal insgesamt?“</li>
         <li>Laden Sie die Bürgeranliegen hoch und fragen Sie zweimal nach den Anliegen je Kategorie im 1. und 2. Halbjahr. A) „Antworten Sie direkt, ohne zu rechnen.“ B) mit dem Prompt vom Board (Code-Ausführung, Rechenweg, Summenprüfung).</li>
         <li>Tragen Sie beide Ergebnisse in die Ergebnisfläche ein.</li>
-        <li class="vertiefung">Vertiefung: Excel-Datei statt CSV hochladen – kommt dasselbe heraus? Oder mit dem Dashboard-Prompt ein lokales HTML-Werkzeug bauen lassen und die CSV im Browser laden.</li>
+        <li class="vertiefung">Vertiefung: Laden Sie statt der CSV die Excel-Datei hoch. Kommt dasselbe heraus? Falls Sie in Station 3 ein Werkzeug gebaut haben: Prüfen Sie damit die gleichen Kennzahlen.</li>
       </ol>
       <ul class="downloads">
         <li><a href="daten/aufwaermen_mini.csv" download="aufwaermen_mini.csv">Mini-Tabelle (.csv)</a></li>
         <li><a href="daten/buergeranliegen.csv" download="buergeranliegen.csv">Bürgeranliegen (.csv)</a></li>
         <li><a href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">Bürgeranliegen (.xlsx)</a></li>
-        <li><a href="werkzeug/dashboard-prompt.txt" download="dashboard-prompt.txt">Dashboard-Prompt (.txt)</a></li>
-        <li><a href="werkzeug/testdaten.csv" download="testdaten.csv">Testdaten (.csv)</a></li>
-        <li><a href="werkzeug/buergeranliegen-dashboard.html">Dashboard im Browser öffnen</a></li>
       </ul>
     </article>
 
@@ -848,13 +870,13 @@
         </div>
         <p class="when">11:00–11:15</p>
       </div>
-      <p>Kurz durchatmen. Wer mag, schaut sich die Ergebnisfläche von Station 3 an: Wo lagen Variante A und B auseinander?</p>
+      <p>Kurz durchatmen. Wer mag, schaut sich die Ergebnisfläche von Station 4 an: Wo lagen Variante A und B auseinander?</p>
     </article>
 
-    <article class="station" id="s4">
+    <article class="station" id="s5">
       <div class="station-head">
         <div>
-          <p class="eyebrow">Station 4</p>
+          <p class="eyebrow">Station 5</p>
           <h2>Muster &amp; Kategorien: Was steckt hinter dem Anstieg?</h2>
         </div>
         <p class="when">11:15–12:00</p>
@@ -871,10 +893,10 @@
       </ul>
     </article>
 
-    <article class="station" id="s5">
+    <article class="station" id="s6">
       <div class="station-head">
         <div>
-          <p class="eyebrow">Station 5</p>
+          <p class="eyebrow">Station 6</p>
           <h2>Zwei Stellungnahmen: Pro und Contra mit Fundstellen</h2>
         </div>
         <p class="when">12:00–12:45</p>
@@ -893,10 +915,10 @@
       </ul>
     </article>
 
-    <article class="station" id="s6">
+    <article class="station" id="s7">
       <div class="station-head">
         <div>
-          <p class="eyebrow">Station 6</p>
+          <p class="eyebrow">Station 7</p>
           <h2>Drei Tools, eine Wahrheit?</h2>
         </div>
         <p class="when">12:45–13:15</p>
@@ -906,19 +928,19 @@
         <li>Tragen Sie die Zahlen in die Vergleichstabelle ein.</li>
         <li>Suchen Sie eine Abweichung aus und zählen Sie in Excel selbst nach (Filter).</li>
         <li>Speichern Sie Prompt und Antwort, zum Beispiel in einer Word-Datei.</li>
-        <li class="vertiefung">Vertiefung: Prüfen Sie das Muster-Ergebnis aus Station 4 in einem neuen Chat mit der Projektanweisung „KI-Ergebnis prüfen“.</li>
+        <li class="vertiefung">Vertiefung: Prüfen Sie das Muster-Ergebnis aus Station 5 in einem neuen Chat. Wählen Sie im Baustein „KI-Analysieren“ den Bereich „KI-Ergebnis prüfen“.</li>
       </ol>
       <ul class="downloads">
         <li><a href="daten/buergeranliegen.csv" download="buergeranliegen.csv">Bürgeranliegen (.csv)</a></li>
         <li><a href="daten/buergeranliegen.xlsx" download="buergeranliegen.xlsx">Bürgeranliegen (.xlsx)</a></li>
-        <li><a href="bausteine/projektanweisungen/ki-ergebnis-pruefen.txt" download="ki-ergebnis-pruefen.txt">Projektanweisung KI-Ergebnis prüfen (.txt)</a></li>
+        <li><a href="bausteine/projektanweisungen/ki-analysieren.txt" download="ki-analysieren.txt">Projektanweisung KI-Analysieren (.txt)</a></li>
       </ul>
     </article>
 
-    <article class="station" id="s7">
+    <article class="station" id="s8">
       <div class="station-head">
         <div>
-          <p class="eyebrow">Station 7</p>
+          <p class="eyebrow">Station 8</p>
           <h2>Die Entscheidungsvorlage für Montag</h2>
         </div>
         <p class="when">13:15–13:40</p>
@@ -931,11 +953,11 @@
         <li class="vertiefung">Vertiefung: Lassen Sie die Vorlage in einem anderen Tool mit „KI-Ergebnis prüfen“ prüfen, im Modus ohne Daten. Welche Aussage hält nicht?</li>
       </ol>
       <ul class="downloads">
-        <li><a href="bausteine/projektanweisungen/ki-ergebnis-pruefen.txt" download="ki-ergebnis-pruefen.txt">Projektanweisung KI-Ergebnis prüfen (.txt)</a></li>
+        <li><a href="bausteine/projektanweisungen/ki-analysieren.txt" download="ki-analysieren.txt">Projektanweisung KI-Analysieren (.txt)</a></li>
       </ul>
     </article>
 
-    <article class="station" id="s8">
+    <article class="station" id="s9">
       <div class="station-head">
         <div>
           <p class="eyebrow">Abschluss</p>
@@ -946,54 +968,37 @@
       <ol>
         <li>Gehen Sie zu Ihrer Haftnotiz vom Start und kleben Sie daneben: erfüllt, teilweise oder nicht.</li>
         <li>Notieren Sie in der Ergebnisfläche: Was nutzen Sie am Montag als Erstes?</li>
-        <li>Sehen Sie sich die drei Bausteine an: die Projektanweisungen zum Kopieren und die Skill-Dateien als ZIP.</li>
+        <li>Sehen Sie sich den Analyse-Baustein an: die kurze Projektanweisung (TXT), die ausführliche MD-Datei für die Projektanlage und die Skill-Datei als ZIP.</li>
       </ol>
       <ul class="downloads">
-        <li><a href="#bausteine">Zu den drei Bausteinen</a></li>
+        <li><a href="#bausteine">Zum Analyse-Baustein</a></li>
       </ul>
     </article>
 
-    <section id="bausteine" aria-labelledby="bausteine-title">
+        <section id="bausteine" aria-labelledby="bausteine-title">
       <div class="section-head">
-        <h2 class="section-title" id="bausteine-title">Ihre drei Bausteine zum Mitnehmen</h2>
-        <p class="section-note">Projektanweisung und Skill</p>
+        <h2 class="section-title" id="bausteine-title">Ihr Analyse-Baustein zum Mitnehmen</h2>
+        <p class="section-note">Eine kurze TXT, eine ausführliche MD, ein Skill</p>
       </div>
-      <p class="note">Jeder Baustein liegt zweimal vor: als Projektanweisung (.txt, zum Kopieren in ein Projekt) und als Skill (ZIP, zum Beispiel für Claude). Die Dateien enthalten keine Kursdaten.</p>
-      <div class="split split-3" style="margin-top: 0.85rem;">
+      <p class="note">Ein Baustein, vier Einstiege: Beim Start wählen Sie Auftrag schärfen, Daten auswerten, KI-Ergebnis prüfen oder Werkzeug bauen. Die kurze Textdatei kopieren Sie in das Anweisungsfeld eines Projekts. Die Markdown-Datei legen Sie als Projektdatei dazu. Der Skill kommt als ZIP, zum Beispiel für Claude. Die Dateien enthalten keine Kursdaten.</p>
+      <div class="split" style="margin-top: 0.85rem;">
         <article class="card">
-          <p class="eyebrow">Baustein 1</p>
-          <h3>Auftrag schärfen</h3>
-          <p class="desc">Aus einer unklaren Mail oder Bitte wird ein prüfbares Auftragsblatt, bevor irgendetwas ausgewertet wird.</p>
+          <p class="eyebrow">Baustein</p>
+          <h3>KI-Analysieren</h3>
+          <p class="desc">Auftrag klären, Daten mit Beleg auswerten, Ergebnisse prüfen oder ein lokales Werkzeug bauen – ohne der KI echte vertrauliche Daten zu geben.</p>
           <ul class="plain-links">
-            <li><a href="bausteine/projektanweisungen/auftrag-schaerfen.txt" download="auftrag-schaerfen.txt">Projektanweisung (.txt)</a></li>
-            <li><a href="bausteine/skills/auftrag-schaerfen.zip" download="auftrag-schaerfen.zip">Skill (ZIP)</a></li>
-            <li><a href="bausteine/skills/auftrag-schaerfen/SKILL.md">SKILL.md im Browser lesen</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <p class="eyebrow">Baustein 2</p>
-          <h3>Daten auswerten</h3>
-          <p class="desc">Tabellen und Texte so auswerten, dass jede Aussage einen Beleg hat – oder ohne Upload nur aus der Beschreibung Pivot, Formeln und ein lokales HTML-Werkzeug bauen.</p>
-          <ul class="plain-links">
-            <li><a href="bausteine/projektanweisungen/daten-auswerten.txt" download="daten-auswerten.txt">Projektanweisung (.txt)</a></li>
-            <li><a href="bausteine/skills/daten-auswerten.zip" download="daten-auswerten.zip">Skill (ZIP)</a></li>
-            <li><a href="bausteine/skills/daten-auswerten/SKILL.md">SKILL.md im Browser lesen</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <p class="eyebrow">Baustein 3</p>
-          <h3>KI-Ergebnis prüfen</h3>
-          <p class="desc">Ein Ergebnis mit fünf Prüffragen gegen die Daten oder ohne Daten prüfen und Abweichungen zwischen mehreren Tools sichtbar machen.</p>
-          <ul class="plain-links">
-            <li><a href="bausteine/projektanweisungen/ki-ergebnis-pruefen.txt" download="ki-ergebnis-pruefen.txt">Projektanweisung (.txt)</a></li>
-            <li><a href="bausteine/skills/ki-ergebnis-pruefen.zip" download="ki-ergebnis-pruefen.zip">Skill (ZIP)</a></li>
-            <li><a href="bausteine/skills/ki-ergebnis-pruefen/SKILL.md">SKILL.md im Browser lesen</a></li>
+            <li><a href="bausteine/projektanweisungen/ki-analysieren.txt" download="ki-analysieren.txt">Kurze Projektanweisung (.txt)</a></li>
+            <li><a href="bausteine/projektanweisungen/ki-analysieren.md" download="ki-analysieren.md">Ausführliche Anweisung (.md)</a></li>
+            <li><a href="bausteine/skills/ki-analysieren.zip" download="ki-analysieren.zip">Skill (ZIP)</a></li>
+            <li><a href="bausteine/skills/ki-analysieren/SKILL.md">SKILL.md im Browser lesen</a></li>
           </ul>
         </article>
       </div>
     </section>
 
-    <section aria-labelledby="anleitung-title">
+
+
+<section aria-labelledby="anleitung-title">
       <div class="section-head">
         <h2 class="section-title" id="anleitung-title">So setzen Sie die Bausteine ein</h2>
       </div>
@@ -1001,9 +1006,10 @@
         <article class="panel">
           <h3>Projektanweisung in ein Projekt einfügen</h3>
           <ol>
-            <li>Laden Sie die Textdatei herunter und öffnen Sie sie.</li>
+            <li>Laden Sie die kurze Textdatei herunter und öffnen Sie sie.</li>
             <li>Kopieren Sie den gesamten Text in das Anweisungsfeld eines Projekts: bei ChatGPT ein Projekt anlegen, bei Claude ein Projekt, bei Le Chat einen Agenten oder eine Bibliothek – sofern Ihr kostenloser Account das anbietet.</li>
-            <li>Gibt es kein solches Feld, fügen Sie den Text als erste Nachricht in einen neuen Chat ein.</li>
+            <li>Legen Sie zusätzlich die ausführliche Datei ki-analysieren.md in der Projektanlage ab (Projektdateien bzw. Wissen/Bibliothek). Die kurze Anweisung verweist darauf.</li>
+            <li>Gibt es kein solches Feld, fügen Sie den Text der Textdatei als erste Nachricht in einen neuen Chat ein.</li>
           </ol>
         </article>
         <article class="panel">
